@@ -1,0 +1,64 @@
+##########################################
+###              bo_1k5f               ###
+##########################################
+# May, 7th 2022
+# from bo_1k5
+# just added pSample.Vindija & pSample.Altai
+##########################################
+
+C.AfW 10
+C.AfE 10
+C.EuA 10
+C.Nea 10
+
+pSample.YRI 					unif	0	1
+pSample.CEU 					unif	0	1
+pSample.Vindija				unif	0	1
+pSample.Altai					unif	0	1
+
+n.0.AfW								log10unif	1000	60000
+n.0.AfE 							log10unif 1000 10000
+n.0.Nea 							log10unif	10	2500
+n.0.EuA 							log10unif	2000	60000
+X0										log10unif	1E-3	0.1
+m.0.AfW> X0
+m.0.AfW< X0
+m.0.AfE> X0
+m.0.AfE< X0
+m.0.EuA>							log10unif 1e-6 1e-1
+m.0.EuA<							log10unif 1e-6 1e-1
+m.0.Nea> X0
+m.0.Nea< X0
+m.0.AfW_from_AfE 			log10unif	1E-8	1E-3
+m.0.AfE_from_AfW 			log10unif	1E-3	0.5
+m.0.AfE_from_EuA 			log10unif	1E-7	1E-4
+m.0.EuA_from_AfE m.0.AfE_from_EuA
+
+T.ooa									unif 40000 70000
+j.ooa.EuA_into_AfE 		log10unif 25 5000
+jn.ooa.EuA_into_AfE		log10unif	2	5000
+jd.ooa.EuA_into_AfE		log10unif	1	2000
+m.ooa.AfE<						log10unif 1e-5 0.1
+m.ooa.AfE>						log10unif 1e-3 0.1
+n.ooa.AfW n.0.AfE
+
+T.mis5 								unif	40000 1e6
+m.mis5.AfW_from_AfE		unif	1.00E-05	3.00E-05
+m.mis5.AfE_from_AfW		unif	3.50E-07	8.00E-07
+
+T.nea 								unif	4.00E+05	1.00E+06
+j.nea.Nea_into_AfE 25.0
+n.nea.AfW 						unif	500	1500
+n.nea.AfE n.nea.AfW
+
+T.rift 								unif	5e5 9e6
+j.rift.AfE_into_AfW 25.0
+
+
+#_________ Rules _________#
+
+#R> T.mis5 > T.ooa
+#R> T.nea > T.mis5
+#R> T.rift > T.nea
+
+#___
