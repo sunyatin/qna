@@ -1,0 +1,24 @@
+
+sampling_locations: [4]
+sampling_times: [0,  5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000]
+
+
+script_qian: /home/rtournebize/gitdir/qna/simulate.py
+script_sumstats: /home/rtournebize/gitdir/qna/sumstats.py
+bin_dir: /home/rtournebize/gitdir/qna/bin
+ref_stats_file: param_files/further_stats.spar
+python: python3.7
+
+
+do_simul: True
+do_stats_aDNA: False
+do_only_aDNA_D: False
+do_stats_IBD: False
+do_stats_Modern: False
+
+genome: [20, 30]
+do_hotspots: False
+mut_model: BinaryMutationModel\(False\)
+
+
+#___

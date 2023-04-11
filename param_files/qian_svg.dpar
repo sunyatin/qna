@@ -1,0 +1,16 @@
+is_qian	True
+
+lprob.time.ya.min	0
+#lprob.time.ya.max	200000
+#lprob.time.ya.step	1000
+
+lprob.time.ya.max	5000000
+lprob.time.ya.step	10000
+
+demo.x.size	20
+demo.y.size	10
+demo.n.migr.arrows	50
+demo.font.size	12
+demo.tube.rescale	1.5
+
+img.format      svg
