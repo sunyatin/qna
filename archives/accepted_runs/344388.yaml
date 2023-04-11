@@ -1,0 +1,329 @@
+time_units: generations
+generation_time: 1
+demes:
+- name: AfW__0
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__1
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__2
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__3
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__4
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__5
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__6
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__7
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__8
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfW__9
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 2561.4132290273315, start_size: 2076.3357686221466}
+  - {end_time: 0, start_size: 5090.650171298041}
+- name: AfE__0
+  start_time: 211723.00657835187
+  ancestors: [AfW__9]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__1
+  start_time: 211722.00657835187
+  ancestors: [AfE__0]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__2
+  start_time: 211721.00657835187
+  ancestors: [AfE__1]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__3
+  start_time: 211720.00657835187
+  ancestors: [AfE__2]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__4
+  start_time: 211719.00657835187
+  ancestors: [AfE__3]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__5
+  start_time: 211718.00657835187
+  ancestors: [AfE__4]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__6
+  start_time: 211717.00657835187
+  ancestors: [AfE__5]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__7
+  start_time: 211716.00657835187
+  ancestors: [AfE__6]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__8
+  start_time: 211715.00657835187
+  ancestors: [AfE__7]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: AfE__9
+  start_time: 211714.00657835187
+  ancestors: [AfE__8]
+  epochs:
+  - {end_time: 39819.81736738129, start_size: 1031.6606373442085}
+  - {end_time: 0, start_size: 2076.3357686221466}
+- name: Nea__0
+  start_time: 39819.81736738129
+  ancestors: [AfE__9]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__1
+  start_time: 39818.81736738129
+  ancestors: [Nea__0]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__2
+  start_time: 39817.81736738129
+  ancestors: [Nea__1]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__3
+  start_time: 39816.81736738129
+  ancestors: [Nea__2]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__4
+  start_time: 39815.81736738129
+  ancestors: [Nea__3]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__5
+  start_time: 39814.81736738129
+  ancestors: [Nea__4]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__6
+  start_time: 39813.81736738129
+  ancestors: [Nea__5]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__7
+  start_time: 39812.81736738129
+  ancestors: [Nea__6]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__8
+  start_time: 39811.81736738129
+  ancestors: [Nea__7]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: Nea__9
+  start_time: 39810.81736738129
+  ancestors: [Nea__8]
+  epochs:
+  - {end_time: 0, start_size: 306.88919520825607}
+- name: EuA__0
+  start_time: 2561.4132290273315
+  ancestors: [AfE__9]
+  epochs:
+  - {end_time: 2487.4628105482757, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__1
+  start_time: 2518.1636841865666
+  ancestors: [EuA__0]
+  epochs:
+  - {end_time: 2444.213265707511, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__2
+  start_time: 2474.914139345802
+  ancestors: [EuA__1]
+  epochs:
+  - {end_time: 2400.9637208667464, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__3
+  start_time: 2431.6645945050377
+  ancestors: [EuA__2]
+  epochs:
+  - {end_time: 2357.714176025982, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__4
+  start_time: 2388.415049664273
+  ancestors: [EuA__3]
+  epochs:
+  - {end_time: 2314.464631185217, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__5
+  start_time: 2345.165504823508
+  ancestors: [EuA__4]
+  epochs:
+  - {end_time: 2271.215086344452, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__6
+  start_time: 2301.9159599827435
+  ancestors: [EuA__5]
+  epochs:
+  - {end_time: 2227.9655415036877, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__7
+  start_time: 2258.6664151419786
+  ancestors: [EuA__6]
+  epochs:
+  - {end_time: 2184.715996662923, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__8
+  start_time: 2215.4168703012137
+  ancestors: [EuA__7]
+  epochs:
+  - {end_time: 2141.466451822158, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+- name: EuA__9
+  start_time: 2172.1673254604493
+  ancestors: [EuA__8]
+  epochs:
+  - {end_time: 2098.2169069813935, start_size: 2235.761328885474}
+  - {end_time: 0, start_size: 17856.12309203475}
+migrations:
+- demes: [AfW__0, AfW__1]
+  rate: 0.00958782329213033
+- demes: [AfW__1, AfW__2]
+  rate: 0.00958782329213033
+- demes: [AfW__2, AfW__3]
+  rate: 0.00958782329213033
+- demes: [AfW__3, AfW__4]
+  rate: 0.00958782329213033
+- demes: [AfW__4, AfW__5]
+  rate: 0.00958782329213033
+- demes: [AfW__5, AfW__6]
+  rate: 0.00958782329213033
+- demes: [AfW__6, AfW__7]
+  rate: 0.00958782329213033
+- demes: [AfW__7, AfW__8]
+  rate: 0.00958782329213033
+- demes: [AfW__8, AfW__9]
+  rate: 0.00958782329213033
+- demes: [Nea__0, Nea__1]
+  rate: 0.00958782329213033
+- demes: [Nea__1, Nea__2]
+  rate: 0.00958782329213033
+- demes: [Nea__2, Nea__3]
+  rate: 0.00958782329213033
+- demes: [Nea__3, Nea__4]
+  rate: 0.00958782329213033
+- demes: [Nea__4, Nea__5]
+  rate: 0.00958782329213033
+- demes: [Nea__5, Nea__6]
+  rate: 0.00958782329213033
+- demes: [Nea__6, Nea__7]
+  rate: 0.00958782329213033
+- demes: [Nea__7, Nea__8]
+  rate: 0.00958782329213033
+- demes: [Nea__8, Nea__9]
+  rate: 0.00958782329213033
+- demes: [AfE__0, AfE__1]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__1, AfE__2]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__2, AfE__3]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__3, AfE__4]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__4, AfE__5]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__5, AfE__6]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__6, AfE__7]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__7, AfE__8]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__8, AfE__9]
+  rate: 0.00958782329213033
+  start_time: 2561.4132290273315
+- demes: [AfE__9, EuA__0]
+  rate: 6.288951924364324e-07
+- {source: AfW__9, dest: AfE__0, end_time: 15508.456297141392, rate: 5.59416575676336e-07}
+- {source: AfE__0, dest: AfW__9, end_time: 15508.456297141392, rate: 2.84617139173863e-05}
+- {source: AfE__0, dest: AfE__1, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__1, dest: AfE__0, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__1, dest: AfE__2, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__2, dest: AfE__1, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__2, dest: AfE__3, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__3, dest: AfE__2, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__3, dest: AfE__4, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__4, dest: AfE__3, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__4, dest: AfE__5, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__5, dest: AfE__4, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__5, dest: AfE__6, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__6, dest: AfE__5, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__6, dest: AfE__7, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__7, dest: AfE__6, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__7, dest: AfE__8, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__8, dest: AfE__7, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfE__8, dest: AfE__9, end_time: 2561.4132290273315, rate: 0.005738016719236369}
+- {source: AfE__9, dest: AfE__8, end_time: 2561.4132290273315, rate: 0.0031314072808617363}
+- {source: AfW__9, dest: AfE__0, start_time: 15508.456297141392, rate: 0.0020713216354513657}
+- {source: AfE__0, dest: AfW__9, start_time: 15508.456297141392, rate: 1.2452893524852033e-08}
+- {source: EuA__0, dest: EuA__1, rate: 0.0006422333869281465}
+- {source: EuA__1, dest: EuA__0, rate: 0.0008408975714200946}
+- {source: EuA__1, dest: EuA__2, rate: 0.0006422333869281465}
+- {source: EuA__2, dest: EuA__1, rate: 0.0008408975714200946}
+- {source: EuA__2, dest: EuA__3, rate: 0.0006422333869281465}
+- {source: EuA__3, dest: EuA__2, rate: 0.0008408975714200946}
+- {source: EuA__3, dest: EuA__4, rate: 0.0006422333869281465}
+- {source: EuA__4, dest: EuA__3, rate: 0.0008408975714200946}
+- {source: EuA__4, dest: EuA__5, rate: 0.0006422333869281465}
+- {source: EuA__5, dest: EuA__4, rate: 0.0008408975714200946}
+- {source: EuA__5, dest: EuA__6, rate: 0.0006422333869281465}
+- {source: EuA__6, dest: EuA__5, rate: 0.0008408975714200946}
+- {source: EuA__6, dest: EuA__7, rate: 0.0006422333869281465}
+- {source: EuA__7, dest: EuA__6, rate: 0.0008408975714200946}
+- {source: EuA__7, dest: EuA__8, rate: 0.0006422333869281465}
+- {source: EuA__8, dest: EuA__7, rate: 0.0008408975714200946}
+- {source: EuA__8, dest: EuA__9, rate: 0.0006422333869281465}
+- {source: EuA__9, dest: EuA__8, rate: 0.0008408975714200946}
