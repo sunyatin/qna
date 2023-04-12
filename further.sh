@@ -122,7 +122,7 @@ POPULATION="$SCRIPT_SIMULATE \
 -o Final.Blake/further/LD_implementation/\{} \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i Final.Blake/further/sankararaman12_NGFI_Admix.est \
+-i archives/Final.Blake/further/sankararaman12_NGFI_Admix.est \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
@@ -156,7 +156,7 @@ SINGLEIND="$SCRIPT_SIMULATE \
 -o Final.Blake/further/LD_implementation/data/\{}.ld1 \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i Final.Blake/further/sankararaman12_NGFI_Admix.est \
+-i archives/Final.Blake/further/sankararaman12_NGFI_Admix.est \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
@@ -363,7 +363,7 @@ CMD="$SCRIPT_SIMULATE \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a Final.Blake/FINAL.accepted --jobs 20 python3.7 $CMD
+parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
 
 #G> 10x7Mbp
 CMD="$SCRIPT_SIMULATE \
@@ -378,6 +378,6 @@ CMD="$SCRIPT_SIMULATE \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a Final.Blake/FINAL.accepted --jobs 20 python3.7 $CMD
+parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
 
 #___
