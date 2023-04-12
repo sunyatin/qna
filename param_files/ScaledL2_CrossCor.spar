@@ -1,0 +1,12 @@
+PI:CEU	l2	1
+PI:YRI	l2	1
+AFS.CEU	l2	1
+AFS.YRI	l2	1
+Fst	l2	1
+D:D	l2	1
+DCFS	l2	1
+SPRIME:match.mean	l2	1
+SPRIME:length.mean	l2	1
+LD:mean	l2	1
+PSMC.CEU	psmc.CrossCorDistance	1
+
