@@ -642,30 +642,7 @@ if (F)  {
     scale_y_log10(limits = c(1., 1e3)) +
     theme(legend.position = "none")
   #___
-  # f4
-  df <- cbind(run=RUN, deme=DEME, age=AGE, y=DATA$SS$f4[,"f4"])
-  df <- na.omit(as.data.frame(apply(df, 2, as.numeric)))
-  df.f4 <- df
-  gf4=ggplot(df.f4) +
-    stat_lineribbon(aes(x=age*1e-3, y=y), .width = c(0.5, 0.75, 0.95, 1.0), size = .7, alpha = 1.) +
-    theme_ggdist() +
-    scale_fill_paletteer_d("rcartocolor::BrwnYl", direction = 1) +
-    facet_wrap(~deme, nrow = 1) +
-    scale_y_continuous(limits = c(0, .1), labels = scales::percent_format(accuracy = 1)) +
-    xlab("Sampling age of Eurasian individual (kya)") + ylab("f4") + 
-    ##
-    geom_point(x=39.405, y=0.064, col="dodgerblue4") + 
-    geom_errorbar(aes(x=39.405, ymin=0.057, ymax=0.071), col="dodgerblue4", width=0) + 
-    geom_errorbarh(aes(y=0.064, xmin=36.950, xmax=41.860), col="dodgerblue4", height=0) + 
-    geom_text(x=39.405, y=0.064, label="Oase1", hjust=0, vjust=0, angle=90, col="darkgray", alpha=.8) +
-    ##
-    geom_point(x=45, y=0.026, col="dodgerblue4") + 
-    geom_errorbar(aes(x=45, ymin=0.026-1.96*0.0033, ymax=0.026+1.96*0.0033), col="dodgerblue4", width=0) + 
-    geom_text(x=45, y=0.026, label="Ust\'-Ishim", hjust=0, vjust=0, angle=90, col="darkgray", alpha=.8) +
-    ##
-    theme(legend.position = "none")
-  #___
-  G <- cowplot::plot_grid(gD, gLD, gf4, nrow = 3)
+  G <- cowplot::plot_grid(gD, gLD, nrow = 3)
   ggsave(G, filename = OutFile, width = 13, height = 10)
   #G <- cowplot::plot_grid(gD, gLD, nrow = 2)
   #ggsave(G, filename = paste0("../plots_080622/",dir,".aDNA.png"), width = 13, height = 8)
