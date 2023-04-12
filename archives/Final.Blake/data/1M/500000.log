@@ -1,0 +1,23 @@
+sprime.jar(version: 07Dec18.5e2)
+Copyright (C) 2017 Brian L. Browning
+Enter "java -jar sprime.jar" to print a list ofcommand line arguments
+
+Start time: 01:58 AM WEST on 05 Aug 2022
+
+Command line: java -Xmx27305m -jar sprime.jar
+  gt=bo_1k5f.2/500000.vcf
+  outgroup=bo_1k5f.2/500000.YRI.ind
+  map=bo_1k5f.2/500000.map
+  out=bo_1k5f.2/500000
+  mu=1.2e-08
+  minscore=150000
+
+Number of outgroup samples:      50
+Number of target samples:        50
+Variant analyzed:                13885
+Segments detected:               1
+Run time:                        2 seconds
+
+End time: 01:58 AM WEST on 05 Aug 2022
+
+sprime.jar finished

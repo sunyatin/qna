@@ -1,0 +1,6 @@
+genotypename: further/LD_implementation/26.asc.s.geno
+snpname: further/LD_implementation/26.asc.gpos.snp
+indivname: further/LD_implementation/26.asc.s.ind
+output: further/LD_implementation/26.computed.txt
+binsize: 0.00001
+maxdis: 0.01

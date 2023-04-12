@@ -1,0 +1,34 @@
+PREFIX:            bo_1k5f/89671
+chr:               9
+parameters:        /home/rtournebize/bin/mcle.fm2
+genotype:          0
+output_sites:      0
+site_positions:
+lambda:            1900
+theta:             0.97
+refpop1genofile:   PREFIX.YRI.geno
+refpop1freqfile:   PREFIX.YRI.freq
+refpop2genofile:   PREFIX.NEA.geno
+refpop2freqfile:   PREFIX.NEA.freq
+refpop1snpfile:    PREFIX.SNP.snp
+refpop2snpfile:    PREFIX.SNP.snp
+admixsnpfile:      PREFIX.SNP.snp
+admixgenofile:     PREFIX.CEU.geno
+admixindfile:      PREFIX.CEU.ind
+outdir:            .
+output_details:
+threshold:         0.0
+keepintfiles:      0
+output:            PREFIX.crf
+debug:             0
+classifier:        crf
+train:             0
+test:              1
+feature2:          minimum
+window:            100000
+vfeaturesmodel:    2
+efeaturesmodel:    full
+featureprefix:     PREFIX
+foldsize:          1
+usemissing:        0
+onlypolymorphic:   1

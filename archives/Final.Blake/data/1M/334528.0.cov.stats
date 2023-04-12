@@ -1,0 +1,11 @@
+A 0.023836
+t -43.920846
+c -0.000030
+Time_gBSample 4392.085
+Time_gBSample.jk.MEAN 4166.881
+Time_gBSample.jk.SE 1778.160
+Time_gBSample.jk.IC95.low 681.688
+Time_gBSample.jk.IC95.up 7652.074
+n_SNP_pairs 1205668
+NRMSD 0.23031
+Incremental.Assessment.Time_gBSample 8599.824 6042.728 6519.125 7589.839 6619.248 5024.489 5492.630 5753.110 4695.982 4392.085

@@ -1,0 +1,7 @@
+#qian: 4.3.1
+seq_length 30000000
+n_seq 20
+mut_rate 2.209666386301312e-08
+recomb_rate 9.656114311364685e-09
+generation_time 25
+mutation_rate 2.209666386301312e-08

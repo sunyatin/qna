@@ -1,0 +1,10 @@
+MinFragmentMatchRate nFragments DetectionRate NonOverlapDetectionRate MatchRateOverAllFragments LengthBpMean LengthBpQ2.5 LengthBpQ97.5 MatchRateMean MatchRateQ2.5 MatchRateQ97.5 LengthBpMedian MatchRateMedian
+0.00 1 0.001 0.001 0.290 421798.0 421798.0 421798.0 0.290 0.290 0.290 421798.000 0.290
+0.05 1 0.001 0.001 0.290 421798.0 421798.0 421798.0 0.290 0.290 0.290 421798.000 0.290
+0.10 1 0.001 0.001 0.290 421798.0 421798.0 421798.0 0.290 0.290 0.290 421798.000 0.290
+0.15 1 0.001 0.001 0.290 421798.0 421798.0 421798.0 0.290 0.290 0.290 421798.000 0.290
+0.20 1 0.001 0.001 0.290 421798.0 421798.0 421798.0 0.290 0.290 0.290 421798.000 0.290
+0.25 1 0.001 0.001 0.290 421798.0 421798.0 421798.0 0.290 0.290 0.290 421798.000 0.290
+0.30 0 nan nan nan nan nan nan nan nan nan nan nan
+0.35 0 nan nan nan nan nan nan nan nan nan nan nan
+0.40 0 nan nan nan nan nan nan nan nan nan nan nan

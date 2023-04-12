@@ -1,0 +1,23 @@
+# Sankararaman 2012
+# Model NGF I
+# No bottleneck in CEU
+##########################################
+
+C.AfW 1
+C.EuA 1
+C.Nea 1
+
+n.0.AfW	1e4
+n.0.EuA 1e4
+n.0.Nea 1e4
+
+T.ooa 62500
+j.ooa.EuA_into_AfW 25
+
+T.split 25e4
+j.split.Nea_into_AfW 25
+
+T.admix unif 10e3 60e3
+a.admix.EuA__0_from_Nea__0	discrete 0 0.025 0.05
+
+#___

@@ -1,0 +1,3 @@
+Variable n Min Q2.5p Q25p Median Mean Std Q75p Q97.5p Max
+Putative_Archaic_Segment_Length_bp_Across_Inds 3182 20004 21307 29788 41610 58516 43640 73359 187618 335773
+Ancestry_Proportion_Across_Inds 100 0.03625 0.03869 0.04583 0.05094 0.05074 0.00673 0.05551 0.06563 0.06640

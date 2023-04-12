@@ -1,0 +1,10 @@
+MinFragmentMatchRate nFragments DetectionRate NonOverlapDetectionRate MatchRateOverAllFragments LengthBpMean LengthBpQ2.5 LengthBpQ97.5 MatchRateMean MatchRateQ2.5 MatchRateQ97.5 LengthBpMedian MatchRateMedian
+0 0 0.0002 0 0 2 0 0 0.0002 0 0 2 0.0002
+0.05 0 nan nan nan nan nan nan nan nan nan nan nan
+0.10 0 nan nan nan nan nan nan nan nan nan nan nan
+0.15 0 nan nan nan nan nan nan nan nan nan nan nan
+0.20 0 nan nan nan nan nan nan nan nan nan nan nan
+0.25 0 nan nan nan nan nan nan nan nan nan nan nan
+0.30 0 nan nan nan nan nan nan nan nan nan nan nan
+0.35 0 nan nan nan nan nan nan nan nan nan nan nan
+0.40 0 nan nan nan nan nan nan nan nan nan nan nan
