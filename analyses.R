@@ -339,7 +339,7 @@ if (F) {
   do.abc.par(DATA, R, 
              paste0(DirOut,"/FINAL"), 
              prior.file = "bo_1k5f.est", 
-             dir.priors = "Final.Blake/data/par_priors_500k")
+             dir.priors = "Final.Blake/data/param_prior_sampling")
 }
 
 #_________________Model Comparison ::: 20x30Mbp__________________#
