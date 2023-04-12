@@ -1,0 +1,5 @@
+This dataset includes tarred and gzipped output from the Sprime analysis of data from 1000 genomes non-African populations and from SGDP Papuans, as well as R code for reproducing Figure 4 of "Analysis of human sequence data reveals two pulses of archaic admixture from Denisovans" (Browning et al.)
+
+Each file of Sprime output has 8 columns, with the first five being taken from the corresponding vcf file (chromosome, position [in build 37 for these data], variant ID, ref allele, alt allele), then a segment id (assigned by sprime, with a unique id for each distinct introgressed segment in the file), the putatively archaic allele (0 for ref, 1 for alt), and the sprime score (always > 150000). 
+
+Two additional columns have been added (9th and 10th columns), showing matching to the Altai Neanderthal (NMATCH) and Altai Denisovan (DMATCH) genomes. Match values are "match" (archaic genome carries the specific allele), "mismatch" (archaic genome doesn't carry the specific allele), or "notcomp" (archaic genome is filtered due to potential quality issues).

@@ -1,0 +1,47 @@
+CHR = {1..22}, X
+POP = {CHB,CHS,JPT}
+
+
+1. snp/chr-CHR.snp.gz
+list of SNPs  (1 per row) used to call Neandertal ancestry
+columns:
+1: snp id 
+2: chromosome
+3: genetic position
+4: physical position (hg19,1-based coords)
+5: derived allele
+6: ancestral allele
+
+2. ids/POP.ids, ids/POP.chr-X.ids
+1kg individual ids (one per haploid genome) 
+
+
+3. POP.hapmap/summaries/chr-CHR.thresh-90.length-0.00.gz
+one line  per snp. contains summaries of the files in 2.
+most relevant columns:
+col 1  : snp id (chr:physical position)
+col 11 : average marginal probability of neandertal ancestry
+col 15 :  number of alleles at the SNP that have neandertal ancestry >=0.9
+detailed description of cols in the header for each file
+
+
+4. POP.hapmap/summaries/haplotypes/chr-CHR.thresh-90.length-0.00.haplotypes
+one line per haplotype (runs of SNPs with probability >0.90)
+col 1: chr
+col 2: haploid individual number (indexed from 0, refers to haploid individual in file ids/POP.ids )
+col 3: start pos 
+col 4: end pos
+col 5: physical length
+col 6: genetic length
+col 7: average predicted probability
+col 8: ignore
+col 9: number of snps 
+
+5. EUR-ASN.hapmap/summaries/contigs/contigs.all
+tiling path of confident Neandertal haplotypes using all EUR-ASN populations
+col 1: chr
+col 2: start pos
+col 3: end pos
+
+
+Questions ? Send email to sankararaman@genetics.med.harvard.edu
