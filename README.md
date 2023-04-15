@@ -12,7 +12,7 @@ At the root of the repository are five directories:
 
 | Folder         | Description                                 |
 |----------------|----------------------------------------------|
-| **archives**       | Stores simulated genetic data, `demes`-formatted histories, observed statistics, empirical genetic maps.   |
+| **archives**       | Stores simulated genetic data[^1], `demes`-formatted histories, observed statistics, empirical genetic maps.   |
 | **bin**            | Stores external softwares.          |
 | **param_files**    | Stores parameter files for all types of analyses.     |
 | **scripts**        | Stores the *python3* scripts.    |
@@ -34,7 +34,7 @@ At the root of the repository are also five files:
 | `bo_1k5f.est` | Specifies the structured model and the prior distribution of parameters. |
 | `published.est` | Specifies the prior distribution of the mutation rate (per generation) to simulate *published* models. |
 
-
+**Note** XX
 
 # General notes
 
@@ -45,3 +45,6 @@ Genetic data are in EIGENSTRAT format with a modification: `0` encodes the **anc
 </p>
 
 # Recipes
+
+
+[^1]: XXX.
