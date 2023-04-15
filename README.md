@@ -80,11 +80,10 @@ For **R**, using `install.packages(X)`:
 
 For legal considerations, we do not include external programs in the repository. Users are asked to download them separately and store the executable in the **bin** directory:
 
-- `sprime.jar` (*S'* analysis) : download from [here](https://faculty.washington.edu/browning/sprime.jar)
-- `psmc` software (*PSMC* analysis) : download from [here](https://github.com/lh3/psmc)
-- `caller-static-2015` (*CRF* analysis) : to be asked from the [authors](https://doi.org/10.1038/nature12961)
-- executable of the single-sample `neanderthal_dating`(to be stored within *bin/Neanderthal_dating/bin/*) : download from [here](https://github.com/priyamoorjani/Neanderthal_dating)
-
+- `sprime.jar` (*S'* analysis) : download from [here](https://faculty.washington.edu/browning/sprime.jar).
+- `psmc` software (*PSMC* analysis) : download from [here](https://github.com/lh3/psmc).
+- `caller-static-2015` (*CRF* analysis) : to be asked from the [authors](https://doi.org/10.1038/nature12961).
+- executable of the single-sample `neanderthal_dating` (to be stored within `bin/Neanderthal_dating/bin/`) : download from [here](https://github.com/priyamoorjani/Neanderthal_dating).
 
 # :large_blue_diamond: Recipes
 
