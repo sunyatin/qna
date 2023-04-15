@@ -5,11 +5,15 @@
 #R> Computational resources
 #N> Special note
 #_______________________________________#
+export SCRIPT_SIMULATE=scripts/simulate.py
+export SCRIPT_SUMSTATS=scripts/sumstats.py
+export BIN_DIR=~/gitdir/qna/bin
+export SCRIPT_FURTHER=scripts/further.py
 
 
 mkdir -p Final.Blake/further
-$ACCEPTED_RUNS_LIST_FILE=archives/list_accepted_runs.txt
-$ACCEPTED_RUNS_PAR_DIR=archives/accepted_runs/par_yaml
+ACCEPTED_RUNS_LIST_FILE=archives/list_accepted_runs.txt
+ACCEPTED_RUNS_PAR_DIR=archives/accepted_runs/par_yaml
 
 #===========================================================================#
 #T> Simulate 1M parameter combinations with statistical pre-screening

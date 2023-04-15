@@ -5,6 +5,10 @@
 #R> Computational resources
 #N> Special note
 #_______________________________________#
+export SCRIPT_SIMULATE=scripts/simulate.py
+export SCRIPT_SUMSTATS=scripts/sumstats.py
+export BIN_DIR=~/gitdir/qna/bin
+export SCRIPT_FURTHER=scripts/further.py
 
 RUN=1014230
 DATA_DIR=Final.Blake/data/20x30Mbp
