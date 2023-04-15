@@ -17,8 +17,8 @@ At the root of the repository are also five files:
 
 | Scripts         | Description                                 |
 |----------------|----------------------------------------------|
-| **general.sh** |  ***Bash* pipeline to simulate genetic data[^1] and compute genetic summary statistics.** Note that if you want to re-run all the pipeline from scratch, you'll need to perform the *run selection* analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (corresponds to the first entry of the `general.sh`  script). |
-| **further.sh** | ***Bash* pipeline to perform additional simulations and analyses:** for robustness assessment. |
+| **general.sh** |  ***Bash* pipeline to simulate genetic data[^1] (incl. aDNA) and compute genetic summary statistics.** Note that if you want to re-run all the pipeline from scratch, you'll need to perform the *run selection* analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (corresponds to the first entry of the `general.sh`  script). |
+| **further.sh** | ***Bash* pipeline to perform additional simulations and analyses:** for robustness assessment (cf. SupMat). |
 | **analyses.R** | ***R* script for all statistical analyses:** run selection, model comparison, and all figure plotting. |
 
 | Files         | Description                                 |
@@ -75,6 +75,17 @@ For **R**, using `install.packages(X)`:
 - scales
 - scico
 - viridis
+
+## External programs
+
+For legal considerations, we do not include external programs in the repository. Users are asked to download them separately and store the executable in the **bin** directory:
+
+- `sprime.jar` (*S'* analysis) java script from [here](https://faculty.washington.edu/browning/sprime.jar)
+- `psmc` software (*PSMC* analysis) download from [here](https://github.com/lh3/psmc)
+- `caller-static-2015` (*CRF* analysis) to be asked from the authors ()
+- binary of the single-sample `neanderthal_dating` executable (single-sample ancestry-LD analysis), to be stored within the bin directory into *Neanderthal_dating/bin/* ; download from [here](https://github.com/priyamoorjani/Neanderthal_dating)
+<--- - vcf2eigenstrat + eigenstrat2vcf --->
+
 
 # :large_blue_diamond: Recipes
 
