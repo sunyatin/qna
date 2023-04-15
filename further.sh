@@ -282,12 +282,12 @@ python3.7 $SCRIPT_SIMULATE \
 --write_geno1 \
 -o Final.Blake/data/empirical_gmaps/HapMap \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/$RUN.par \
+-i $ACCEPTED_RUNS_PAR_DIR/$RUN.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
 -g 20 50 \
---map data/genetic_maps/HapMap/GRCh37/plink.chrXXX.GRCh37.map \
+--map archives/genetic_maps/HapMap/GRCh37/plink.chrXXX.GRCh37.map \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar \
 --stats stats SE sprime crf psmc ld \
@@ -300,12 +300,12 @@ python3.7 $SCRIPT_SIMULATE \
 --write_geno1 \
 -o Final.Blake/data/empirical_gmaps/Spence19 \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/$RUN.par \
+-i $ACCEPTED_RUNS_PAR_DIR/$RUN.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
 -g 20 50 \
---map data/genetic_maps/Spence19/hg19/converted_maps/YRI.chrXXX.map \
+--map archives/genetic_maps/Spence19/hg19/converted_maps/YRI.chrXXX.map \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar \
 --stats stats SE sprime crf psmc ld \
@@ -319,12 +319,12 @@ python3.7 $SCRIPT_SIMULATE \
 -x \
 -o Final.Blake/data/empirical_gmaps/HapMap. \
 --bin_dir ~/bin \
--i archives/accepted_runs/$RUN.par \
+-i $ACCEPTED_RUNS_PAR_DIR/$RUN.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
 -g 20 50 \
---map data/genetic_maps/HapMap/GRCh37/plink.chrXXX.GRCh37.map \
+--map archives/genetic_maps/HapMap/GRCh37/plink.chrXXX.GRCh37.map \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 --seed 42 | tee Final.Blake/data/empirical_gmaps/HapMap..log
 #
@@ -332,12 +332,12 @@ python3.7 $SCRIPT_SIMULATE \
 -x \
 -o Final.Blake/data/empirical_gmaps/Spence19. \
 --bin_dir ~/bin \
--i archives/accepted_runs/$RUN.par \
+-i $ACCEPTED_RUNS_PAR_DIR/$RUN.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
 -g 20 50 \
---map data/genetic_maps/Spence19/hg19/converted_maps/YRI.chrXXX.map \
+--map archives/genetic_maps/Spence19/hg19/converted_maps/YRI.chrXXX.map \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 --seed 42 | tee Final.Blake/data/empirical_gmaps/Spence19..log
 
@@ -355,7 +355,7 @@ CMD="$SCRIPT_SIMULATE \
 --model qian_demo \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/\{}.par \
+-i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
 -o Final.Blake/data/20x30Mbp.JC69/\{} \
 -g 20 30 --mut_model 'JC69(False)' \
 --algo hudson \
@@ -363,14 +363,14 @@ CMD="$SCRIPT_SIMULATE \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 #G> 10x7Mbp
 CMD="$SCRIPT_SIMULATE \
 --model qian_demo \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/\{}.par \
+-i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
 -o Final.Blake/data/10x7Mbp.JC69/\{} \
 -g 10 7 --mut_model 'JC69(False)' \
 --algo hudson \
@@ -378,6 +378,6 @@ CMD="$SCRIPT_SIMULATE \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 #___
