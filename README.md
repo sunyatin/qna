@@ -1,8 +1,8 @@
-<center>
+<p align="center">
 ䷎
-</center>
+</p>
 
-<p style='text-align: justify;'>
+<p align="justify">
 
 This repository contains all data and scripts to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). It also contains the `demes`-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can further be re-used to perform novel simulations or inference.
 
@@ -38,7 +38,7 @@ At the root of the repository are also five files:
 
 # General notes
 
-<p style='text-align: justify;'>
+<p align="justify">
 
 Genetic data are in EIGENSTRAT format with a modification: `0` encodes the **ancestral homozygous** genotype (instead of the *derived* homozygous genotype in pure EIGENSTRAT). Subsequently, `2` encodes the derived homozygous genotype. All genotypes are mono- or bi-allelic at most.
 
