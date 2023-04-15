@@ -8,7 +8,8 @@
 
 
 mkdir -p Final.Blake/further
-
+$ACCEPTED_RUNS_LIST_FILE=archives/list_accepted_runs.txt
+$ACCEPTED_RUNS_PAR_DIR=archives/accepted_runs/par_yaml
 
 #===========================================================================#
 #T> Simulate 1M parameter combinations with statistical pre-screening
@@ -49,7 +50,7 @@ CMD="$SCRIPT_SIMULATE \
 --model qian_demo \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/\{}.par \
+-i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
 -o Final.Blake/data/20x30Mbp/\{} \
 -g 20 30 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
@@ -57,7 +58,7 @@ CMD="$SCRIPT_SIMULATE \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 
 #N> seed=42
@@ -66,7 +67,7 @@ CMD="$SCRIPT_SIMULATE \
 --model qian_demo \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/\{}.par \
+-i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
 -o Final.Blake/data/20x30Mbp.HOTSPOTS/\{} \
 -g 20 30 --mut_model 'BinaryMutationModel(False)' \
 --do_hotspots --hotspots_seed 42 \
@@ -75,7 +76,7 @@ CMD="$SCRIPT_SIMULATE \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 
 #===========================================================================#
@@ -326,7 +327,7 @@ CMD="$SCRIPT_SIMULATE \
 -o Final.Blake/data/10x7Mbp.50sim/1M.accepted/\{} \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/\{}.par \
+-i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar \
@@ -337,7 +338,7 @@ CMD="$SCRIPT_SIMULATE \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai \
 --psmc_pops CEU YRI \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai"
-parallel -a archives/list_accepted_runs.txt --jobs 25 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 25 python3.7 $CMD
 
 
 #===========================================================================#
@@ -353,7 +354,7 @@ CMD="$SCRIPT_SIMULATE \
 -o Final.Blake/data/10x7Mbp.50sim.HOTSPOTS/1M.accepted/\{} \
 --write_geno1 \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/\{}.par \
+-i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 -s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar \
@@ -365,7 +366,7 @@ CMD="$SCRIPT_SIMULATE \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai \
 --psmc_pops CEU YRI \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai"
-parallel -a archives/list_accepted_runs.txt --jobs 25 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 25 python3.7 $CMD
 
 
 #===========================================================================#
@@ -378,19 +379,19 @@ parallel -a archives/list_accepted_runs.txt --jobs 25 python3.7 $CMD
 
 #N> Simulate genetic data with ancient Eurasians sampled in CEU:4
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU4 \
 param_files/ocean.U.L.CEU4.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.CEU4.log
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.CEU4.log
 
 #N> Simulate genetic data with ancient Eurasians sampled in CEU:0,3,6,9
 #G> `All` SNPs
 #G> diploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U \
 param_files/ocean.U.L.di.All.0369.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.di.All.0369.log
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.di.All.0369.log
 
 #===============#
 #     CEU:4     #
@@ -400,37 +401,37 @@ parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD | tee Final
 #G> `All` SNPs
 #G> diploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU4 \
 param_files/ocean.U.L.di.All.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.di.All.log
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.di.All.log
 
 # Analyze the aDNA data sampled in CEU:4
 #G> `1M` SNPs
 #G> diploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU4 \
 param_files/ocean.U.L.di.1M.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.di.1M.log
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.di.1M.log
 
 # Analyze the aDNA data sampled in CEU:4
 #G> `Archaic` SNPs
 #G> pseudodiploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU4 \
 param_files/ocean.U.L.pseudodi.Archaic.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.pseudodi.Archaic.log
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.pseudodi.Archaic.log
 
 # Analyze the aDNA data sampled in CEU:4
 #G> `1M` SNPs
 #G> pseudodiploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU4 \
 param_files/ocean.U.L.pseudodi.1M.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.pseudodi.1M.log
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 7 python3.7 $CMD | tee Final.Blake/further/20x30Mbp.U.pseudodi.1M.log
 
 
 #===============#
@@ -441,37 +442,37 @@ parallel -a archives/list_accepted_runs.txt --jobs 7 python3.7 $CMD | tee Final.
 #G> `All` SNPs
 #G> diploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU3 \
 param_files/ocean.U.L.di.All.CEU3.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 # Analyze the aDNA data sampled in CEU:3
 #G> `1M` SNPs
 #G> diploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU3 \
 param_files/ocean.U.L.di.1M.CEU3.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 # Analyze the aDNA data sampled in CEU:3
 #G> `Archaic` SNPs
 #G> pseudodiploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU3 \
 param_files/ocean.U.L.pseudodi.Archaic.CEU3.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 # Analyze the aDNA data sampled in CEU:3
 #G> `1M` SNPs
 #G> pseudodiploid
 CMD="$SCRIPT_FURTHER \
-archives/accepted_runs/\{}.par \
+$ACCEPTED_RUNS_PAR_DIR/\{}.par \
 Final.Blake/further/20x30Mbp.U.CEU3 \
 param_files/ocean.U.L.pseudodi.1M.CEU3.yaml"
-parallel -a archives/list_accepted_runs.txt --jobs 20 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 
 #=================#
@@ -526,7 +527,7 @@ parallel --jobs 2 python3.7 $CMD ::: aDNA.CEU.0.0 aDNA.CEU.0.5000 aDNA.CEU.0.100
 python3.7 $SCRIPT_SIMULATE \
 -o Final.Blake/plots/1014230x \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/1014230.par \
+-i $ACCEPTED_RUNS_PAR_DIR/1014230.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
@@ -538,7 +539,7 @@ python3.7 $SCRIPT_SIMULATE \
 CMD="$SCRIPT_SIMULATE \
 -o Final.Blake/accepted_runs/\{} \
 --bin_dir $BIN_DIR \
--i archives/accepted_runs/\{}.par \
+-i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --model qian_demo \
@@ -546,7 +547,7 @@ CMD="$SCRIPT_SIMULATE \
 -x \
 --draw param_files/qian_svg.dpar \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai"
-parallel -a archives/list_accepted_runs.txt --jobs 5 python3.7 $CMD
+parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 5 python3.7 $CMD
 rm Final.Blake/accepted_runs/*.lprob
 
 #===========================================================================#
