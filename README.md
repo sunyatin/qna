@@ -1,5 +1,5 @@
 <p align="center">䷎</p>
-# &#19918; <img align="right" width="200" src="http://https://github.com/sunyatin/qna/archives/model.png">
+# haha &#19918; <img align="right" width="200" src="https://github.com/sunyatin/qna/blob/main/archives/model.png">
 
 This repository contains all data[^1] and scripts to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). It also contains the `demes`-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can further be re-used to perform novel simulations or inference.
 
