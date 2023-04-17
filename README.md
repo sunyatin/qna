@@ -36,16 +36,19 @@ If you want to simulate data for other runs that the ones selected for the study
 
 You will need to have:
 - python 3.7+ (check that python3.7-dev is also installed, `sudo apt-get install python3.7-dev`)
-- R 3.6+
+- R 3.6+ (`sudo apt-get install r-base=3.6.4`)
 - openjdk 11.0+
 - gcc
 
 ## Dependencies
 
-For **python3.7+** (install using `python3.7 -m pip3 install name_of_module`):
+https://repo.anaconda.com/archive/Anaconda3-2023.03-Linux-x86_64.sh
+
+For **python3.7+** (install using `python3.7 -m pip3 install name_of_module` or alternatively with `conda`):
 - cython
 - numpy
 - pybind11
+- pythran
 - scipy
 - pandas
 
@@ -86,9 +89,11 @@ For **R** (install using `install.packages(name_of_library)`):
 - scico
 - viridis
 
-To install all at once:
+To install all at once, in a R session:
 
-`install.package(c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis"))`
+```R
+install.packages(c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis"))
+```
 
 
 ## External programs
