@@ -28,36 +28,46 @@ At the root of the repository are also five files:
 
 # :large_blue_diamond: Setup
 
+> Note that the pipelines can only run on **UNIX**. If you use Windows, you would need to run a UNIX virtual machine.
+
 Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder: `~/gitdir/qna` and uncompress the archive content inside.
 
 If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR`
 
+You will need to have:
+- python 3.7+ (check that python3.7-dev is also installed, `sudo apt-get install python3.7-dev`)
+- R 3.6+
+- openjdk 11.0+
+- gcc
+
 ## Dependencies
 
-For **python3**, using `pip3 install X`:
-- allel *[>= 1.3.5]*
+For **python3.7+** (install using `python3.7 -m pip3 install name_of_module`):
+- cython
+- numpy
+- pybind11
+- scipy
+- pandas
+
+Then:
+- scikit-allel *[>= 1.3.5]* `python3.7 -m pip3 install scikit-allel>=1.3.5`
 - argparse
 - copy
 - decimal
-- demes *[>= 0.2.2]*
+- demes *[>= 0.2.2]* `python3.7 -m pip3 install demes==0.2.2`
 - gzip
 - logging
-- msprime *[>=1.1.0]*
-- numpy
+- msprime *[>=1.1.0]* `python3.7 -m pip3 install msprime>=1.1.0`
 - os
-- pandas
-- PCG64
-- pdist
 - re
-- scipy
 - shutil
-- stdpopsim *[>= 0.1.3b1]*
+- stdpopsim *[>= 0.1.3b1]* `python3.7 -m pip3 install stdpopsim>=0.1.3`
 - subprocess
 - sys
 - time
 - yaml
 
-For **R**, using `install.packages(X)`:
+For **R** (install using `install.packages(name_of_library)`):
 - cowplot
 - corrplot
 - dplyr
@@ -76,6 +86,11 @@ For **R**, using `install.packages(X)`:
 - scico
 - viridis
 
+To install all at once:
+
+`install.package(c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis"))`
+
+
 ## External programs
 
 For legal considerations, we do not include external programs in the repository. Users are asked to download them separately and store the executable in the **bin** directory:
@@ -87,9 +102,9 @@ For legal considerations, we do not include external programs in the repository.
 
 # :large_blue_diamond: Recipes
 
-## Re-running statistical analyses from data archives
+## Re-running statistical analyses using original data
 
-Assuming you are in `~/gitdir/qna`, if you want rerun the statistical analyses using the genetic data that were simulated for the original paper (*archives/*), just copy the "*Final.Blake*" directory to the current directory.
+Assuming you are in `~/gitdir/qna`, if you want rerun the statistical analyses using the genetic data that were simulated for the original paper, just copy the "*Final.Blake*" directory to the current directory.
 
 ```bash
 cp -r archives/Final.Blake .
