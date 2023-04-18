@@ -28,7 +28,7 @@ At the root of the repository are also five files:
 
 # :large_blue_diamond: Setup
 
-> Note that the pipelines can only run on **UNIX**. If you use Windows, you would need to run a UNIX virtual machine.
+> Note that the pipelines can only run on **UNIX**/**Linux**. If you use Windows, you could use a virtual machine.
 
 Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder: `~/gitdir/qna` and uncompress the archive content inside.
 
@@ -42,7 +42,21 @@ You will need to have:
 
 ## Dependencies
 
-https://repo.anaconda.com/archive/Anaconda3-2023.03-Linux-x86_64.sh
+
+
+wget https://repo.anaconda.com/archive/Anaconda3-2023.03-Linux-x86_64.sh
+cd XX
+bash Anaconda3-2023.03-Linux-x86_64.sh
+
+conda create --name qna
+conda activate qna
+conda install -c conda-forge r-base=4.1.2
+
+
+conda config --add channels conda-forge
+conda install msprime>=1.1.0
+
+
 
 For **python3.7+** (install using `python3.7 -m pip3 install name_of_module` or alternatively with `conda`):
 - cython
@@ -92,7 +106,9 @@ For **R** (install using `install.packages(name_of_library)`):
 To install all at once, in a R session:
 
 ```R
-install.packages(c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis"))
+pkg <- c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis")
+pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
+if(length(pkg)) install.packages(pkg)
 ```
 
 
