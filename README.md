@@ -30,35 +30,19 @@ At the root of the repository are also five files:
 
 > Note that the pipelines can only run on **UNIX**/**Linux**. If you use Windows, you could use a virtual machine.
 
-Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder: `~/gitdir/qna` and uncompress the archive content inside.
+Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder: `~/gitdir/qna` and decompress the archive content inside.
 
-If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR`
+If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
 
 You will need to have:
-- python 3.7+ (check that python3.7-dev is also installed, `sudo apt-get install python3.7-dev`)
-- R 3.6+ (`sudo apt-get install r-base=3.6.4`)
-- openjdk 11.0+
-- gcc
+- **python 3.7+** (check that *python3.7-dev* is also installed, if not: `sudo apt-get install python3.7-dev`)
+- **R 3.6+** (`sudo apt-get install r-base=3.6.4`)
+- **openjdk 11.0+**
 
 ## Dependencies
 
-
-
-wget https://repo.anaconda.com/archive/Anaconda3-2023.03-Linux-x86_64.sh
-cd XX
-bash Anaconda3-2023.03-Linux-x86_64.sh
-
-conda create --name qna
-conda activate qna
-conda install -c conda-forge r-base=4.1.2
-
-
-conda config --add channels conda-forge
-conda install msprime>=1.1.0
-
-
-
-For **python3.7+** (install using `python3.7 -m pip3 install name_of_module` or alternatively with `conda`):
+### **python3.7+**
+Install using `python3[.7] -m pip install name_of_module` or alternatively with `conda`:
 - cython
 - numpy
 - pybind11
@@ -71,12 +55,16 @@ Then:
 - argparse
 - copy
 - decimal
-- demes *[>= 0.2.2]* `python3.7 -m pip3 install demes==0.2.2`
+- demes *[0.2.2]* `python3.7 -m pip3 install demes==0.2.2`
+- demesdraw *[0.3.0]* `python3.7 -m pip3 install demesdraw==0.2.2`
 - gzip
 - logging
+- matplotlib
 - msprime *[>=1.1.0]* `python3.7 -m pip3 install msprime>=1.1.0`
 - os
+- random
 - re
+- seaborn
 - shutil
 - stdpopsim *[>= 0.1.3b1]* `python3.7 -m pip3 install stdpopsim>=0.1.3`
 - subprocess
@@ -84,7 +72,22 @@ Then:
 - time
 - yaml
 
-For **R** (install using `install.packages(name_of_library)`):
+Alternatively, using `conda`:
+```bash
+# conda create --name qna && conda activate qna
+# or
+# conda init
+conda config --add channels conda-forge
+conda install gsl
+conda install openblas
+# then install the python3 libraries:
+conda install msprime>=1.1.0
+conda install argparse
+# etc.
+```
+
+### R
+Install using `install.packages(name_of_library)`:
 - cowplot
 - corrplot
 - dplyr
@@ -104,13 +107,18 @@ For **R** (install using `install.packages(name_of_library)`):
 - viridis
 
 To install all at once, in a R session:
-
 ```R
 pkg <- c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis")
 pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
+cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
 
+The installation of some packages can be problematic by this mean. If so, try:
+```bash
+conda install r-minpack.lm
+conda install r-stringi
+```
 
 ## External programs
 
