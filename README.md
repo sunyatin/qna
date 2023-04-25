@@ -17,7 +17,7 @@ At the root of the repository are also five files:
 
 | Scripts         | Description                                 |
 |----------------|----------------------------------------------|
-| **general.sh** |  ***Bash* pipeline to simulate genetic data[^1] (incl. aDNA) and compute genetic summary statistics.** Note that if you want to re-run all the pipeline from scratch, you'll need to perform the *run selection* analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (corresponds to the first entry of the `general.sh`  script). |
+| **general.sh** |  ***Bash* pipeline to simulate genetic data[^1] (incl. aDNA) and compute genetic summary statistics.** Note that if you want to re-run all the pipeline from scratch, you'll need to perform the run selection analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (corresponds to the first entry of the `general.sh`  script). |
 | **further.sh** | ***Bash* pipeline to perform additional simulations and analyses:** for robustness assessment (cf. SupMat). |
 | **analyses.R** | ***R* script for all statistical analyses:** run selection, model comparison, and all figure plotting. |
 
@@ -28,24 +28,22 @@ At the root of the repository are also five files:
 
 # :large_blue_diamond: Setup
 
-> Note that the pipelines can only run on **UNIX**/**Linux**. If you use Windows, you could use a virtual machine.
+> Note that scripts run on **UNIX**/**Linux**. If your OS is Windows, please use a virtual machine.
 
 Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder (`~`) and decompress the archive content inside at:
 
 > `~/gitdir/qna`
 
-If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
-
-Requires programs:
-- **python 3.7+** (check that *python3.7-dev* is also installed, if not: `sudo apt-get install python3.7-dev`)
-- **R 3.6+** (`sudo apt-get install r-base=3.6.4`)
+Mandatory programs:
+- **python 3.7+** (check that *python3.7-dev* is also installed)
+- **R 3.6+**
 - **openjdk 11.0+**
 - **gsl**
 - **openblas**
 
 ## Conda environment
 
-Create a conda environment. Here, we create an environment called "qna":
+Create a *conda* environment. Here, we create an environment called "*qna*":
 
 ```bash
 # Create the qna environment
@@ -82,10 +80,10 @@ python3.7 -m pip install scipy==1.7.3
 python3.7 -m pip install pandas==1.3.5
 python3.7 -m pip install seaborn==0.11.2
 python3.7 -m pip install msprime==1.1.0
-python3.7 -m pip3 install demes==0.2.2
-python3.7 -m pip3 install demesdraw==0.3.0
-python3.7 -m pip3 install stdpopsim==0.1.3
-python3.7 -m pip3 install scikit-allel==1.3.5
+python3.7 -m pip install demes==0.2.2
+python3.7 -m pip install demesdraw==0.3.0
+python3.7 -m pip install stdpopsim==0.1.3
+python3.7 -m pip install scikit-allel==1.3.5
 
 ```
 
@@ -106,7 +104,7 @@ Other dependencies:
 - yaml
 
 ### R
-Install within the conda environment using `install.packages(name_of_library)`:
+Within the *conda* environment, install within *R* using `install.packages(name_of_library)`:
 - cowplot
 - corrplot
 - dplyr
@@ -125,7 +123,7 @@ Install within the conda environment using `install.packages(name_of_library)`:
 - scico
 - viridis
 
-To install all at once, in a R session:
+To install all at once, in a *R* session:
 ```R
 pkg <- c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis")
 pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
@@ -133,7 +131,7 @@ cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
 
-The installation of some packages can be problematic by this mean. If so, try using conda, e.g.:
+If installation fails for some packages, try using *conda*, e.g.:
 ```bash
 conda install r-minpack.lm
 conda install r-stringi
@@ -141,16 +139,16 @@ conda install r-stringi
 
 ## External programs
 
-For legal considerations, we do not include external programs in the repository. Users are asked to download them separately and store the executable in the **bin** directory:
+For legal considerations, we do not include external programs in the repository. Users are asked to download them separately and store the executable in the `~/gitdir/qna/bin` directory:
 
 - `sprime.jar` (*S'* analysis) : download from [here](https://faculty.washington.edu/browning/sprime.jar).
 - `psmc` software (*PSMC* analysis) : download from [here](https://github.com/lh3/psmc).
 - `caller-static-2015` (*CRF* analysis) : to be asked from the [authors](https://doi.org/10.1038/nature12961).
 - executable of the single-sample `neanderthal_dating` (to be stored within `bin/Neanderthal_dating/bin/`) : download from [here](https://github.com/priyamoorjani/Neanderthal_dating).
 
-## Troubleshoots
+## Troubleshooting
 
-If you encounter error messages related to missing library, try to change the LD_LIBRARY_PATH variable. For instance, if you get an error message stating that "libgsl.so.25" was not found, try:
+If you get error messages related to missing libraries, consider changing the LD_LIBRARY_PATH variable. For instance, if you get a message stating that "libgsl.so.25" is not found, try:
 
 ```bash
 # Locate the library path
@@ -158,17 +156,23 @@ sudo find / -name "libgsl.so.25"
 # Usually, it will be in your HOME folder, under conda/envs/qna/lib or miniconda3/envs/qna/lib
 
 # Replace the LD_LIBRARY_PATH variable with the path returned by the previous command
+# This will have to be done each time you open a new terminal.
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/USERNAME/miniconda3/envs/qna/lib
 export LD_LIBRARY_PATH
 ```
 
+# :large_blue_diamond: Usage
+
+If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
+
 # :large_blue_diamond: Recipes
 
-## Re-running statistical analyses using original data
+## Re-running statistical analyses using the original data
 
-Assuming you are in `~/gitdir/qna`, if you want rerun the statistical analyses using the genetic data that were simulated for the original paper, just copy the "*Final.Blake*" directory to the current directory.
+Assuming you are in `~/gitdir/qna`, if you want rerun the statistical analyses using the genetic data that were simulated for the original paper, just copy the `archives/Final.Blake` directory to `~/gitdir/qna`.
 
 ```bash
+cd ~/gitdir/qna
 cp -r archives/Final.Blake .
 ```
 ## Converting a `demes`-formatted history to a `ms` command
