@@ -1,12 +1,12 @@
 # &#19918; <img align="right" width="300" src="https://github.com/sunyatin/qna/blob/main/archives/model.png">
 
-This repository contains all data[^1] and scripts to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). It also contains the `demes`-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can further be re-used to perform novel simulations or inference.
+This repository contains all data[^1] and scripts to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). It also contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can further be re-used to perform novel simulations or inference.
 
 At the root of the repository are five directories. All relevant information can be found in the README files of each respective directory.
 
 | Folder         | Description                                 |
 |----------------|----------------------------------------------|
-| **archives**       | Stores simulated genetic data[^1], `demes`-formatted histories, observed statistics, empirical genetic maps.   |
+| **archives**       | Stores simulated genetic data[^1], [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics, empirical genetic maps.   |
 | **bin**            | Stores external softwares.          |
 | **param_files**    | Stores parameter files for all types of analyses.     |
 | **scripts**        | Stores the *python3* scripts.    |
@@ -41,9 +41,9 @@ Mandatory programs:
 - **gsl**
 - **openblas**
 
-## Conda environment
+## *conda* environment
 
-Create a *conda* environment. Here, we create an environment called "*qna*":
+Create a *conda* or [*miniconda*](https://docs.conda.io/en/latest/miniconda.html) environment. Here, we create an environment called "*qna*":
 
 ```bash
 # Create the qna environment
@@ -62,7 +62,7 @@ conda install -c conda-forge openblas
 
 ## Dependencies
 
-### **python3.7+**
+### For ***python3.7+***
 - numpy *[1.21.6]*
 - scipy *[1.7.3]*
 - cvxpy *[1.2.0]*
@@ -90,40 +90,11 @@ python3.7 -m pip install scikit-allel==1.3.5
 ```
 
 Other dependencies:
-- argparse
-- copy
-- decimal
-- gzip
-- logging
-- matplotlib
-- os
-- random
-- re
-- shutil
-- subprocess
-- sys
-- time
-- yaml
+argparse, copy, decimal, gzip, logging, matplotlib, os, random, re, shutil, subprocess, sys, time, yaml
 
-### R
+### For ***R***
 Within the *conda* environment, install within *R* using `install.packages(name_of_library)`:
-- cowplot
-- corrplot
-- dplyr
-- ggbeeswarm
-- ggdist
-- ggbump
-- ggmap
-- ggplot2
-- ggsci
-- ggridges
-- minpack.lm
-- paletteer
-- plotrix
-- reshape2
-- scales
-- scico
-- viridis
+cowplot, corrplot, dplyr, ggbeeswarm, ggdist, ggbump, ggmap, ggplot2, ggsci, ggridges, minpack.lm, paletteer, plotrix, reshape2, scales, scico, viridis
 
 To install all at once, in a *R* session:
 ```R
@@ -184,4 +155,4 @@ cp -r archives/Final.Blake .
 remi (dot) tournebize (at) univ-tlse3 (dot) fr
 
 
-[^1]: Genetic data are in EIGENSTRAT format with a modification: `0` encodes the **ancestral homozygous** genotype (instead of the *derived* homozygous genotype in pure EIGENSTRAT). Subsequently, `2` encodes the derived homozygous genotype. All genotypes are mono- or bi-allelic at most.
+[^1]: Genetic data are in [EIGENSTRAT](https://reich.hms.harvard.edu/software/InputFileFormats) format with a modification: `0` encodes the **ancestral homozygous** genotype (instead of the *derived* homozygous genotype in pure EIGENSTRAT). Subsequently, `2` encodes the derived homozygous genotype. All genotypes are mono- or bi-allelic at most.
