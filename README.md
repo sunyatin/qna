@@ -65,6 +65,7 @@ conda install -c conda-forge openblas
 ### **python3.7+**
 - numpy *[1.21.6]*
 - scipy *[1.7.3]*
+- cvxpy *[1.2.0]*
 - pandas *[1.3.5]*
 - seaborn *[0.11.2]*
 - msprime *[1.1.0]*
@@ -77,6 +78,7 @@ Commands:
 ```python
 python3.7 -m pip install numpy==1.21.6
 python3.7 -m pip install scipy==1.7.3
+python3.7 -m pip install cvxpy==1.2.0
 python3.7 -m pip install pandas==1.3.5
 python3.7 -m pip install seaborn==0.11.2
 python3.7 -m pip install msprime==1.1.0

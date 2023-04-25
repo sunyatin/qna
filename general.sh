@@ -37,8 +37,7 @@ CMD="$SCRIPT_SIMULATE \
 --ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU \
 --conditions_1 pi.CEU:0.5:1.5 pi.YRI:0.5:1.8 \
 --conditions_2 pi.CEU:0.5:1.5 pi.YRI:0.5:1.8 Fst:0.05:0.35 AFS.CEU.1:0.18:0.35 AFS.YRI.1:0.28:0.42 SPRIME.match.mean:0.65:0.90 SPRIME.length.mean:100000:600000 DCFS.1:0.2:0.4"
-seq 1 880000 | parallel --jobs 20 python3.7 $CMD
-seq 1000000 1200000 | parallel --jobs 20 python3.7 $CMD
+seq 1 1000000 | parallel --jobs 20 python3.7 $CMD
 
 
 #===========================================================================#
