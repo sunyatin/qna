@@ -30,64 +30,83 @@ At the root of the repository are also five files:
 
 > Note that the pipelines can only run on **UNIX**/**Linux**. If you use Windows, you could use a virtual machine.
 
-Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder: `~/gitdir/qna` and decompress the archive content inside.
+Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder (`~`) and decompress the archive content inside at:
+
+> `~/gitdir/qna`
 
 If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
 
-You will need to have:
+Requires programs:
 - **python 3.7+** (check that *python3.7-dev* is also installed, if not: `sudo apt-get install python3.7-dev`)
 - **R 3.6+** (`sudo apt-get install r-base=3.6.4`)
 - **openjdk 11.0+**
+- **gsl**
+- **openblas**
+
+## Conda environment
+
+Create a conda environment. Here, we create an environment called "qna":
+
+```bash
+# Create the qna environment
+conda create --name qna
+
+# Activate
+conda activate qna
+
+# Add channel
+conda config --add channels conda-forge
+
+# Install gsl and openblas:
+conda install -c conda-forge gsl
+conda install -c conda-forge openblas
+```
 
 ## Dependencies
 
 ### **python3.7+**
-Install using `python3[.7] -m pip install name_of_module` or alternatively with `conda`:
-- cython
-- numpy
-- pybind11
-- pythran
-- scipy
-- pandas
+- numpy *[1.21.6]*
+- scipy *[1.7.3]*
+- pandas *[1.3.5]*
+- seaborn *[0.11.2]*
+- msprime *[1.1.0]*
+- demes *[0.2.2]*
+- demesdraw *[0.3.0]*
+- stdpopsim *[0.1.3b1]*
+- scikit-allel *[1.3.5]*
 
-Then:
-- scikit-allel *[>= 1.3.5]* `python3.7 -m pip3 install scikit-allel>=1.3.5`
+Commands:
+```python
+python3.7 -m pip install numpy==1.21.6
+python3.7 -m pip install scipy==1.7.3
+python3.7 -m pip install pandas==1.3.5
+python3.7 -m pip install seaborn==0.11.2
+python3.7 -m pip install msprime==1.1.0
+python3.7 -m pip3 install demes==0.2.2
+python3.7 -m pip3 install demesdraw==0.3.0
+python3.7 -m pip3 install stdpopsim==0.1.3
+python3.7 -m pip3 install scikit-allel==1.3.5
+
+```
+
+Other dependencies:
 - argparse
 - copy
 - decimal
-- demes *[0.2.2]* `python3.7 -m pip3 install demes==0.2.2`
-- demesdraw *[0.3.0]* `python3.7 -m pip3 install demesdraw==0.2.2`
 - gzip
 - logging
 - matplotlib
-- msprime *[>=1.1.0]* `python3.7 -m pip3 install msprime>=1.1.0`
 - os
 - random
 - re
-- seaborn
 - shutil
-- stdpopsim *[>= 0.1.3b1]* `python3.7 -m pip3 install stdpopsim>=0.1.3`
 - subprocess
 - sys
 - time
 - yaml
 
-Alternatively, using `conda`:
-```bash
-# conda create --name qna && conda activate qna
-# or
-# conda init
-conda config --add channels conda-forge
-conda install gsl
-conda install openblas
-# then install the python3 libraries:
-conda install msprime>=1.1.0
-conda install argparse
-# etc.
-```
-
 ### R
-Install using `install.packages(name_of_library)`:
+Install within the conda environment using `install.packages(name_of_library)`:
 - cowplot
 - corrplot
 - dplyr
@@ -114,7 +133,7 @@ cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
 
-The installation of some packages can be problematic by this mean. If so, try:
+The installation of some packages can be problematic by this mean. If so, try using conda, e.g.:
 ```bash
 conda install r-minpack.lm
 conda install r-stringi
@@ -128,6 +147,20 @@ For legal considerations, we do not include external programs in the repository.
 - `psmc` software (*PSMC* analysis) : download from [here](https://github.com/lh3/psmc).
 - `caller-static-2015` (*CRF* analysis) : to be asked from the [authors](https://doi.org/10.1038/nature12961).
 - executable of the single-sample `neanderthal_dating` (to be stored within `bin/Neanderthal_dating/bin/`) : download from [here](https://github.com/priyamoorjani/Neanderthal_dating).
+
+## Troubleshoots
+
+If you encounter error messages related to missing library, try to change the LD_LIBRARY_PATH variable. For instance, if you get an error message stating that "libgsl.so.25" was not found, try:
+
+```bash
+# Locate the library path
+sudo find / -name "libgsl.so.25"
+# Usually, it will be in your HOME folder, under conda/envs/qna/lib or miniconda3/envs/qna/lib
+
+# Replace the LD_LIBRARY_PATH variable with the path returned by the previous command
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/USERNAME/miniconda3/envs/qna/lib
+export LD_LIBRARY_PATH
+```
 
 # :large_blue_diamond: Recipes
 
