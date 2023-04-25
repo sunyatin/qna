@@ -1,9 +1,4 @@
-#qian: 4.3.4
-seq_length 1000000
-n_seq 1
-mut_rate 1.2e-08
-recomb_rate 1e-08
-generation_time 25
+
 C.AfW 10.0
 C.AfE 10.0
 C.EuA 10.0
@@ -45,4 +40,4 @@ n.nea.AfW 1235.8415426414049
 n.nea.AfE 1235.8415426414049
 T.rift 5512135.022248478
 j.rift.AfE_into_AfW 25.0
-T.0 0.0
+
