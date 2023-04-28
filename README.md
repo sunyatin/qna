@@ -11,7 +11,7 @@ archives/		# contains the accepted demographic models, the observed statistics a
 bin/			# external binaries
 param_files/		# parameter files for various types of analyses
 scripts/		# all custom python3 scripts
-scripts_slurm		# bash scripts for computations run on SLURM
+scripts_slurm/		# bash scripts for computations run on SLURM
 
 ./
 	general.sh	# general pipeline to simulate genetic data and calculate statistics
@@ -146,7 +146,7 @@ ACCEPTED_RUNS_PAR_DIR=the_directory_of_your_prior_simulations
 Run relevant sections in general.sh
 ```
 
-## Converting between `demes` models and `ms` commands
+## Converting between `demes` or `msprime` models and `ms` commands
 
 - ***ms => demes***
 ```python
