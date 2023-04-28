@@ -5,8 +5,8 @@ This repository contains all scripts and files to reproduce the results presente
 ## Layout
 
 ```
-archives/			   # contains the accepted demographic models, the observed statistics and the list of accepted runs
-bin/					# external binaries
+archives/			# contains the accepted demographic models, the observed statistics and the list of accepted runs
+bin/			# external binaries
 param_files/			# parameter files for various types of analyses
 scripts/				# all custom python3 scripts
 scripts_slurm	 	  # bash scripts for computations run on SLURM
