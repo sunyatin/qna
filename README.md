@@ -12,12 +12,12 @@ scripts/			# all custom python3 scripts
 scripts_slurm			# bash scripts for computations run on SLURM
 
 ./
-	general.sh			# general pipeline to simulate genetic data and calculate statistics
-	further.sh			# further simulations/analyses for robustness assessment (cf. Supplementary Materials)
-	analyses.R			# R script for final statistical analyses (run selection, model comparison) and plotting
+	general.sh		# general pipeline to simulate genetic data and calculate statistics
+	further.sh		# further simulations/analyses for robustness assessment (cf. Supplementary Materials)
+	analyses.R		# R script for final statistical analyses (run selection, model comparison) and plotting
 
-	bo_1k5f.est			# structured model with prior parameter distributions
-	published.est			# prior distribution on mutation rates for published model simulations
+	bo_1k5f.est		# structured model with prior parameter distributions
+	published.est		# prior distribution on mutation rates for published model simulations
 ```
 
 Note that all relevant information can be found in the README files of each respective directory. The `archives/` directory contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics.
