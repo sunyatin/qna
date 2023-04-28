@@ -1,0 +1,17 @@
+cowplot
+corrplot
+dplyr
+ggbeeswarm
+ggdist
+ggbump
+ggmap
+ggplot2
+ggsci
+ggridges
+minpack.lm
+paletteer
+plotrix
+reshape2
+scales
+scico
+viridis
