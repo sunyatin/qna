@@ -1,52 +1,51 @@
 # &#19918; <img align="right" width="300" src="https://github.com/sunyatin/qna/blob/main/archives/model.png">
 
-This repository contains all data[^1] and scripts to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). It also contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can further be re-used to perform novel simulations or inference.
+This repository contains all scripts and files to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). The data[^1] are contained in another repository named [qna_data](https://github.com/sunyatin/qna_data). This repository also contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can also be used to perform novel simulations or inference.
 
-At the root of the repository are five directories. All relevant information can be found in the README files of each respective directory.
+## Layout
 
-| Folder         | Description                                 |
-|----------------|----------------------------------------------|
-| **archives**       | Stores simulated genetic data[^1], [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics, empirical genetic maps.   |
-| **bin**            | Stores external softwares.          |
-| **param_files**    | Stores parameter files for all types of analyses.     |
-| **scripts**        | Stores the *python3* scripts.    |
-| **scripts_slurm**  | Stores *bash* scripts for analyses run on SLURM. |
+```
+archives/							# contains the accepted demographic models, the observed statistics and the list of accepted runs
+bin/									# external binaries
+param_files/					# parameter files for various types of analyses
+scripts/							# all custom python3 scripts
+scripts_slurm/				# bash scripts for computations run on SLURM
+
+./
+	general.sh 					# general pipeline to simulate genetic data and calculate statistics
+	further.sh					# further simulations/analyses for robustness assessment (cf. Supplementary Materials)
+	analyses.R					# R script for final statistical analyses (run selection, model comparison) and plotting
+
+	bo_1k5f.est 				# structured model with prior parameter distributions
+	published.est				# prior distribution on mutation rates for published model simulations
+```
+
+Note that all relevant information can be found in the README files of each respective directory. The `archives/` directory contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics.
+
+The `general.sh` file contains the pipeline to simulate genetic data[^1] (incl. aDNA) and compute genetic summary statistics. Note that if you want to re-run all the pipeline from scratch, you'll need to perform the run selection analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (first entry of the `general.sh` script).
 
 
-At the root of the repository are also five files:
+# Setup
 
-| Scripts         | Description                                 |
-|----------------|----------------------------------------------|
-| **general.sh** |  ***Bash* pipeline to simulate genetic data[^1] (incl. aDNA) and compute genetic summary statistics.** Note that if you want to re-run all the pipeline from scratch, you'll need to perform the run selection analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (corresponds to the first entry of the `general.sh`  script). |
-| **further.sh** | ***Bash* pipeline to perform additional simulations and analyses:** for robustness assessment (cf. SupMat). |
-| **analyses.R** | ***R* script for all statistical analyses:** run selection, model comparison, and all figure plotting. |
+> All scripts were run on **Linux**. If your OS is Windows, I would advice using a virtual machine with Linux.
 
-| Files         | Description                                 |
-|----------------|----------------------------------------------|
-| **bo_1k5f.est** | Specifies the structured model and the prior distribution of parameters. |
-| **published.est** | Specifies the prior distribution of the mutation rate (per generation) to simulate *published* models. |
-
-# :large_blue_diamond: Setup
-
-> Note that scripts run on **UNIX**/**Linux**. If your OS is Windows, please use a virtual machine.
-
-Download the repository archive. For easier installation (to avoid changing absolute paths), create a directory in your HOME folder (`~`) and decompress the archive content inside at:
-
-> `~/gitdir/qna`
-
-Mandatory programs:
-- **python 3.7+** (check that *python3.7-dev* is also installed)
-- **R 3.6+**
-- **openjdk 11.0+**
-- **gsl**
-- **openblas**
-
-## *conda* environment
-
-Create a *conda* or [*miniconda*](https://docs.conda.io/en/latest/miniconda.html) environment. Here, we create an environment called "*qna*":
+Create a directory `gitdir/qna` in your HOME folder and git clone the repository inside:
 
 ```bash
-# Create the qna environment
+# Create a local directory in your HOME folder
+mkdir -p ~/gitdir/qna
+
+# Change current folder
+cd ~/gitdir/qna
+
+# Git clone the repository
+git clone git@github.com:sunyatin/qna.git .
+```
+
+Then, create a `conda` or [`miniconda`](https://docs.conda.io/en/latest/miniconda.html) environment. Here, we create an environment called "*qna*":
+
+```bash
+# Create the environment
 conda create --name qna
 
 # Activate
@@ -60,55 +59,21 @@ conda install -c conda-forge gsl
 conda install -c conda-forge openblas
 ```
 
-## Dependencies
+## Requirements
 
-### For ***python3.7+***
-- numpy *[1.21.6]*
-- scipy *[1.7.3]*
-- cvxpy *[1.2.0]*
-- pandas *[1.3.5]*
-- seaborn *[0.11.2]*
-- msprime *[1.1.0]*
-- demes *[0.2.2]*
-- demesdraw *[0.3.0]*
-- stdpopsim *[0.1.3b1]*
-- scikit-allel *[1.3.5]*
+You will need the following: **python 3.7+** (check that *python3.7-dev* is also installed), **R 3.6+**, **openjdk 11.0+**, **gsl**, **openblas**.
 
-Commands:
-```python
-python3.7 -m pip install numpy==1.21.6
-python3.7 -m pip install scipy==1.7.3
-python3.7 -m pip install cvxpy==1.2.0
-python3.7 -m pip install pandas==1.3.5
-python3.7 -m pip install seaborn==0.11.2
-python3.7 -m pip install msprime==1.1.0
-python3.7 -m pip install demes==0.2.2
-python3.7 -m pip install demesdraw==0.3.0
-python3.7 -m pip install stdpopsim==0.1.3
-python3.7 -m pip install scikit-allel==1.3.5
+To install required libraries for python3, within the `conda` environment: `python3[.7] -m pip install requirements_python.txt`
 
-```
-
-Other dependencies:
-argparse, copy, decimal, gzip, logging, matplotlib, os, random, re, shutil, subprocess, sys, time, yaml
-
-### For ***R***
-Within the *conda* environment, install within *R* using `install.packages(name_of_library)`:
-cowplot, corrplot, dplyr, ggbeeswarm, ggdist, ggbump, ggmap, ggplot2, ggsci, ggridges, minpack.lm, paletteer, plotrix, reshape2, scales, scico, viridis
-
-To install all at once, in a *R* session:
+To install required libraries for R, within the `conda` environment and a R session:
 ```R
-pkg <- c("cowplot", "corrplot", "dplyr", "ggbeeswarm", "ggdist", "ggbump", "ggmap", "ggplot2", "ggsci", "ggridges", "minpack.lm", "paletteer", "plotrix", "reshape2", "scales", "scico", "viridis")
+pkg <- read.table("requirements_R.txt", header=F, stringsAsFactors=F)[,1]
 pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
 cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
 
-If installation fails for some packages, try using *conda*, e.g.:
-```bash
-conda install r-minpack.lm
-conda install r-stringi
-```
+If installation fails for some packages, try using `conda` directly, e.g.: `conda install r-minpack.lm r-stringi`
 
 ## External programs
 
@@ -134,23 +99,37 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/USERNAME/miniconda3/envs/qna/lib
 export LD_LIBRARY_PATH
 ```
 
-# :large_blue_diamond: Usage
+# Usage
 
 If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
 
-# :large_blue_diamond: Recipes
 
-## Re-running statistical analyses using the original data
+## Reproducing analyses and figures from Tournebize & Chikhi (2023)
 
-Assuming you are in `~/gitdir/qna`, if you want rerun the statistical analyses using the genetic data that were simulated for the original paper, just copy the `archives/Final.Blake` directory to `~/gitdir/qna`.
+To reproduce the analyses and plotting, you'll need to download the simulated data from the `qna_data` repository:
 
 ```bash
-cd ~/gitdir/qna
-cp -r archives/Final.Blake .
+# Create a new local directory in your HOME folder
+mkdir -p ~/gitdir/qna_data
+
+# Set the current directory
+cd ~/gitdir/qna_data
+
+# Clone the qna_data repository inside
+git clone git@github.com:sunyatin/qna_data.git .
+
+# Then copy the content to the qna directory
+cp -R Final.Blake ~/gitdir/qna
+cp -R genetic_maps ~/gitdir/archives
+
+# Then run the sections of your interest in a R session
+# Note that you have to be in the conda environment before running R
+Rscript analyses.R
 ```
+
 ## Converting a `demes`-formatted history to a `ms` command
 
-# :large_blue_diamond: Contact
+# Contact
 
 remi (dot) tournebize (at) univ-tlse3 (dot) fr
 
