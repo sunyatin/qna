@@ -127,10 +127,58 @@ Rscript analyses.R
 
 ## Running the model from scratch
 
+If you want to re-run the pipeline from scratch, or re-simulate or re-analyze data for other runs than the ones selected in Tournebize & Chikhi (2023), the values of two variables should be changed in `general.sh` and `further.sh`:
+- `ACCEPTED_RUNS_LIST_FILE` path to a file containing the ID of the selected runs, on separate lines
+- `ACCEPTED_RUNS_PAR_DIR` path to a directory containing the parameter files (`*.par`) of the selected runs
 
-If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `general.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
+```bash
+# Simulate a prior distribution of genetic data
+Run the first section in general.sh
 
-## Converting a `demes`-formatted history to a `ms` command
+# Select the runs
+Run the first section in analyses.R
+
+# Change the values of the variables in general.sh
+ACCEPTED_RUNS_LIST_FILE=your_file_containing_the_runs_selected_in_the_previous_R_analysis
+ACCEPTED_RUNS_PAR_DIR=the_directory_of_your_prior_simulations
+
+# Run additional simulations (e.g. with larger genome size)
+Run relevant sections in general.sh
+```
+
+## Converting between `demes` models and `ms` commands
+
+- ***ms => demes***
+```python
+import demes
+# No is the reference effective size
+Model = demes.from_ms(ms_command, N0=No)
+```
+
+- ***ms => msprime***
+```python
+import demes, msprime
+# No is the reference effective size
+Model = msprime.Demography.from_demes(demes.from_ms(ms_command, N0=No))
+```
+
+- ***msprime => ms***
+```python
+import demes, msprime
+# msprimeDemography is the demographic model in the `msprime` format
+# No is the reference effective size
+ms_command = demes.to_ms(msprimeDemography.to_demes(), N0=No)
+print(ms_command)
+```
+
+- ***demes => ms***
+```python
+import demes
+# demesDemography is the demographic model in the `demes` format
+# No is the reference effective size
+ms_command = demes.to_ms(demesDemography, N0=No)
+print(ms_command)
+```
 
 # Contact
 
