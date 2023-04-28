@@ -1,28 +1,28 @@
 # &#19918; <img align="right" width="300" src="https://github.com/sunyatin/qna/blob/main/archives/model.png">
 
-This repository contains all scripts and files to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). The data[^1] are contained in another repository named [qna_data](https://github.com/sunyatin/qna_data). This repository also contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can also be used to perform novel simulations or inference.
+This repository contains all scripts and files to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). This repository also contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can also be used to perform novel simulations or inference. The data[^1] are contained in another repository named [qna_data](https://github.com/sunyatin/qna_data).
 
 ## Layout
 
 ```
-archives/							# contains the accepted demographic models, the observed statistics and the list of accepted runs
-bin/									# external binaries
-param_files/					# parameter files for various types of analyses
-scripts/							# all custom python3 scripts
-scripts_slurm/				# bash scripts for computations run on SLURM
+archives/			   # contains the accepted demographic models, the observed statistics and the list of accepted runs
+bin/					# external binaries
+param_files/			# parameter files for various types of analyses
+scripts/				# all custom python3 scripts
+scripts_slurm	 	  # bash scripts for computations run on SLURM
 
 ./
-	general.sh 					# general pipeline to simulate genetic data and calculate statistics
-	further.sh					# further simulations/analyses for robustness assessment (cf. Supplementary Materials)
-	analyses.R					# R script for final statistical analyses (run selection, model comparison) and plotting
+	general.sh 	  	 # general pipeline to simulate genetic data and calculate statistics
+	further.sh			# further simulations/analyses for robustness assessment (cf. Supplementary Materials)
+	analyses.R			# R script for final statistical analyses (run selection, model comparison) and plotting
 
-	bo_1k5f.est 				# structured model with prior parameter distributions
-	published.est				# prior distribution on mutation rates for published model simulations
+	bo_1k5f.est 		  # structured model with prior parameter distributions
+	published.est		 # prior distribution on mutation rates for published model simulations
 ```
 
 Note that all relevant information can be found in the README files of each respective directory. The `archives/` directory contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics.
 
-The `general.sh` file contains the pipeline to simulate genetic data[^1] (incl. aDNA) and compute genetic summary statistics. Note that if you want to re-run all the pipeline from scratch, you'll need to perform the run selection analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (first entry of the `general.sh` script).
+> The `general.sh` file contains the full pipeline to simulate genetic data (incl. aDNA) and to compute genetic summary statistics. If you want to re-run the pipeline from scratch, you must perform the run selection analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (see the first entry of the `general.sh` script).
 
 
 # Setup
@@ -72,8 +72,7 @@ pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
 cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
-
-If installation fails for some packages, try using `conda` directly, e.g.: `conda install r-minpack.lm r-stringi`
+> If installation fails for some packages (esp. *minpack.lm* or *stringi* in R), try using `conda` directly, e.g.: `conda install NAME_OF_THE_PACKAGE`
 
 ## External programs
 
@@ -106,7 +105,7 @@ If you want to simulate data for other runs that the ones selected for the study
 
 ## Reproducing analyses and figures from Tournebize & Chikhi (2023)
 
-To reproduce the analyses and plotting, you'll need to download the simulated data from the `qna_data` repository:
+To reproduce the analyses and plotting, first download the simulated data from the [qna_data](https://github.com/sunyatin/qna_data) repository.
 
 ```bash
 # Create a new local directory in your HOME folder
