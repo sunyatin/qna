@@ -2,6 +2,8 @@
 
 This repository contains all scripts and files to reproduce the results presented in the study "*Questioning Neanderthal admixture*" (doi: https://doi.org/10.1101/2023.04.05.535686). This repository also contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted encoding of the twenty accepted scenarios from the introduced structured model. Scripts can also be used to perform novel simulations or inference. The data[^1] are contained in another repository named [qna_data](https://github.com/sunyatin/qna_data).
 
+The genetic data[^1] (modified EIGENSTRAT format) for the twenty accepted runs of our structured model can be found in the qna_data repository, [here](https://github.com/sunyatin/qna_data/tree/main/Final.Blake/data/20x30Mbp).
+
 ## Layout
 
 ```
@@ -100,9 +102,6 @@ export LD_LIBRARY_PATH
 
 # Usage
 
-If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `further.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
-
-
 ## Reproducing analyses and figures from Tournebize & Chikhi (2023)
 
 To reproduce the analyses and plotting, first download the simulated data from the [qna_data](https://github.com/sunyatin/qna_data) repository.
@@ -125,6 +124,11 @@ cp -R genetic_maps ~/gitdir/archives
 # Note that you have to be in the conda environment before running R
 Rscript analyses.R
 ```
+
+## Running the model from scratch
+
+
+If you want to simulate data for other runs that the ones selected for the study, you'll have to change the values of these variables in the `general.sh` file: `ACCEPTED_RUNS_LIST_FILE` & `ACCEPTED_RUNS_PAR_DIR` (in the first lines)
 
 ## Converting a `demes`-formatted history to a `ms` command
 

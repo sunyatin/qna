@@ -13,6 +13,7 @@ export SCRIPT_FURTHER=scripts/further.py
 RUN=1014230
 DATA_DIR=Final.Blake/data/20x30Mbp
 DATA_OUT=Final.Blake/further/sensitivity
+ACCEPTED_RUNS_PAR_DIR=archives/accepted_runs/par_yaml
 
 mkdir -p $DATA_OUT
 
@@ -344,44 +345,5 @@ python3.7 $SCRIPT_SIMULATE \
 --map archives/genetic_maps/Spence19/hg19/converted_maps/YRI.chrXXX.map \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 --seed 42 | tee Final.Blake/data/empirical_gmaps/Spence19..log
-
-
-#===========================================================================#
-#D> 24.03.2023
-#T> Simulate the 20 accepted runs with the Jukes-Cantor 1969 mutation model
-#G> 20x30Mbp
-#G> JC69 mutation model
-#R> ocean
-#===========================================================================#
-
-#N> seed=42
-CMD="$SCRIPT_SIMULATE \
---model qian_demo \
---write_geno1 \
---bin_dir $BIN_DIR \
--i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
--o Final.Blake/data/20x30Mbp.JC69/\{} \
--g 20 30 --mut_model 'JC69(False)' \
---algo hudson \
---seed 42 \
---samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
--s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
---ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
-
-#G> 10x7Mbp
-CMD="$SCRIPT_SIMULATE \
---model qian_demo \
---write_geno1 \
---bin_dir $BIN_DIR \
--i $ACCEPTED_RUNS_PAR_DIR/\{}.par \
--o Final.Blake/data/10x7Mbp.JC69/\{} \
--g 10 7 --mut_model 'JC69(False)' \
---algo hudson \
---seed \{} \
---samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
--s $SCRIPT_SUMSTATS param_files/stats_MAC_diplo.spar --stats stats SE sprime psmc ld crf \
---ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI"
-parallel -a $ACCEPTED_RUNS_LIST_FILE --jobs 20 python3.7 $CMD
 
 #___
