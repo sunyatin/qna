@@ -8,9 +8,18 @@ The genetic data[^1] (modified EIGENSTRAT format) for the twenty accepted runs o
 
 ```
 archives/		# contains the accepted demographic models, the observed statistics and the list of accepted runs
+	accepted_runs/	# demographic models of the twenty accepted runs
+		model_plots/	# png and svg plots of the accepted models
+		par_yaml/	# YAML and parameter files of the accepted models
+	obs/	# observed/empirical values of the genetic summary statistics
+		estimation/ # contains the script and data for estimation of CRF and S' values
+
 bin/			# external binaries
+
 param_files/		# parameter files for various types of analyses
+
 scripts/		# all custom python3 scripts
+
 scripts_slurm/		# bash scripts for computations run on SLURM
 
 ./
@@ -20,6 +29,9 @@ scripts_slurm/		# bash scripts for computations run on SLURM
 
 	bo_1k5f.est	# structured model with prior parameter distributions
 	published.est	# prior distribution on mutation rates for published model simulations
+
+	requirements_python.txt	# library requirements for python3
+	requirements_R.txt	# library requirements for R
 ```
 
 Note that all relevant information can be found in the README files of each respective directory. The `archives/` directory contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics.
@@ -55,17 +67,21 @@ conda activate qna
 
 # Add channel
 conda config --add channels conda-forge
-
-# Install gsl and openblas:
-conda install -c conda-forge gsl
-conda install -c conda-forge openblas
 ```
 
 ## Requirements
 
-You will need the following: **python 3.7+** (check that *python3.7-dev* is also installed), **R 3.6+**, **openjdk 11.0+**, **gsl**, **openblas**.
+You will need the following: **python 3.7+** (check that `python3.7-dev` is also installed), **R 3.6.3+**, **openjdk 11.0+**, **gsl**, **openblas**:
 
-To install required libraries for python3, within the `conda` environment: `python3[.7] -m pip install requirements_python.txt`
+```bash
+conda install -c conda-forge python=3.7 r-base=3.6.3 openjdk=11.0 gsl openblas
+```
+
+To install required libraries for python3, within the `conda` environment:
+
+```bash
+python3[.7] -m pip install -r requirements_python.txt
+```
 
 To install required libraries for R, within the `conda` environment and a R session:
 ```R
@@ -74,7 +90,7 @@ pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
 cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
-> If installation fails for some packages (esp. *minpack.lm* or *stringi* in R), try using `conda` directly, e.g.: `conda install NAME_OF_THE_PACKAGE`
+> If installation fails for some packages (esp. *lattice*, *minpack.lm* or *stringi* in R), try using `conda` directly: `conda install -c conda-forge r-NAME_OF_THE_PACKAGE`. For instance: `conda install -c conda-forge r-lattice`
 
 ## External programs
 
@@ -101,6 +117,38 @@ export LD_LIBRARY_PATH
 ```
 
 # Usage
+
+## General important notes
+
+For all calls to the `simulate.py` script, you need to make sure that the alias `python3` in your Linux console refers to the version 3.7+:
+
+```bash
+# Check version of python3
+python3 --version
+
+# If the version is lower than 3.7, change the alias in the current session:
+
+# First locate the path to python3.7
+which python3.7
+#=> Would usually return:
+# /usr/bin/python3.7
+
+# Change the alias with what the previous command returned
+alias python3="/usr/bin/python3.7"
+
+# Note that if you want to permanently change the alias, open the ~/.bashrc file
+nano ~/.bashrc
+
+# Add the alias
+alias python3="/usr/bin/python3.7"
+
+# Save the file and reload it
+source ~/.bashrc
+
+# Check that the version is the proper one
+python3 --version
+#=> It should now be 3.7+
+```
 
 ## Reproducing analyses and figures from Tournebize & Chikhi (2023)
 
@@ -146,6 +194,26 @@ ACCEPTED_RUNS_PAR_DIR=the_directory_of_your_prior_simulations
 Run relevant sections in general.sh
 ```
 
+## Simulate and calculate summary statistics for a particular model
+
+The following command will simulate genetic data under the run "1014230". It will simulate 2 chromosomes of 30 Mbp each, sample 50 individuals in YRI and CEU, 1 Neanderthal at time 50 kya, and calculate all genetic summary statistics. The output files will be written into the repository `test/` with prefix `output_1014230.*`.
+
+```bash
+python3.7 scripts/simulate.py \
+--model qian_demo \
+--write_geno1 \
+--bin_dir bin \
+-i archives/accepted_runs/par_yaml/1014230.par \
+-o test/output_1014230 \
+-g 2 30 \
+--mut_model 'BinaryMutationModel(False)' \
+--algo hudson \
+--samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
+-s scripts/sumstats.py param_files/stats_MAC_diplo.spar \
+--stats stats SE sprime psmc ld crf \
+--ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI
+```
+
 ## Converting between `demes` or `msprime` models and `ms` commands
 
 - ***ms => demes***
@@ -176,6 +244,8 @@ print(ms_command)
 import demes
 # demesDemography is the demographic model in the `demes` format
 # No is the reference effective size
+# Load the demographic model
+demesDemography = demes.load(path_to_the_yaml_file)
 ms_command = demes.to_ms(demesDemography, N0=No)
 print(ms_command)
 ```
