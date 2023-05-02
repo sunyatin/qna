@@ -7,12 +7,12 @@ The genetic data[^1] (modified EIGENSTRAT format) for the twenty accepted runs o
 ## Layout
 
 ```
-archives/		# contains the accepted demographic models, the observed statistics and the list of accepted runs
+archives/			# contains the accepted demographic models, the observed statistics and the list of accepted runs
 	accepted_runs/	# demographic models of the twenty accepted runs
 		model_plots/	# png and svg plots of the accepted models
 		par_yaml/	# YAML and parameter files of the accepted models
-	obs/	# observed/empirical values of the genetic summary statistics
-		estimation/ # contains the script and data for estimation of CRF and S' values
+	obs/		# observed/empirical values of the genetic summary statistics
+		estimation/	# contains the script and data for estimation of CRF and S' values
 
 bin/			# external binaries
 
