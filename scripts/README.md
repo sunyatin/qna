@@ -1,6 +1,6 @@
 The manual and tutorial for the custom scripts `simulate.py` and `sumstats.py` is located in the [DEMIURGES](https://github.com/sunyatin/DEMIURGES) repository. Note that the `qian_demo.py` script is the generator of the structured model.
 
-The `*.R` scripts here only contain functions that are called in [`analyze.R`](https://github.com/sunyatin/qna/blob/main/analyses.R).
+The `*.R` scripts here only contain functions that are called in [`../analyze.R`](https://github.com/sunyatin/qna/blob/main/analyses.R).
 
 The following python scripts contain the demographic models of the eleven published studies considered in Tournebize & Chikhi (2023):
 - `durvasula20.py` [Durvasula et al. 2020](https://www.science.org/doi/full/10.1126/sciadv.aax5097)
