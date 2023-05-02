@@ -14,9 +14,9 @@ archives/			# contains the accepted demographic models, the observed statistics 
 	obs/			# observed/empirical values of the genetic summary statistics
 		estimation/	# contains the script and data for estimation of CRF and S' values
 
-bin/			# external binaries
+bin/				# external binaries
 
-param_files/		# parameter files for various types of analyses
+param_files/			# parameter files for various types of analyses
 
 scripts/		# all custom python3 scripts
 
