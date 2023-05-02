@@ -18,17 +18,17 @@ bin/				# external binaries
 
 param_files/			# parameter files for various types of analyses
 
-scripts/		# all custom python3 scripts
+scripts/			# all custom python3 scripts
 
-scripts_slurm/		# bash scripts for computations run on SLURM
+scripts_slurm/			# bash scripts for computations run on SLURM
 
 ./
-	general.sh	# general pipeline to simulate genetic data and calculate statistics
-	further.sh	# further simulations/analyses for robustness assessment (cf. Supplementary Materials)
-	analyses.R	# R script for final statistical analyses (run selection, model comparison) and plotting
+	general.sh		# general pipeline to simulate genetic data and calculate statistics
+	further.sh		# further simulations/analyses for robustness assessment (cf. Supplementary Materials)
+	analyses.R		# R script for final statistical analyses (run selection, model comparison) and plotting
 
-	bo_1k5f.est	# structured model with prior parameter distributions
-	published.est	# prior distribution on mutation rates for published model simulations
+	bo_1k5f.est		# structured model with prior parameter distributions
+	published.est		# prior distribution on mutation rates for published model simulations
 
 	requirements_python.txt	# library requirements for python3
 	requirements_R.txt	# library requirements for R
