@@ -1,4 +1,4 @@
-This directory contains full information about the twenty accepted runs of our structured model introduced in Tournebize & Chikhi (2023).
+This directory contains full information about the twenty accepted runs of the structured model introduced in Tournebize & Chikhi (2023).
 
 The `model_plots` directory contains the visual representation of the runs (in SVG format), obtained using the [`demesdraw`](https://github.com/grahamgower/demesdraw) python library.
 
