@@ -83,14 +83,18 @@ To install required libraries for python3, within the `conda` environment:
 python3[.7] -m pip install -r requirements_python.txt
 ```
 
-To install required libraries for R, within the `conda` environment and a R session:
+To install required libraries for R, within the `conda` environment, first run:
+```bash
+conda install -c conda-forge r-lattice r-mass
+```
+Then, **in a R session**:
 ```R
 pkg <- read.table("requirements_R.txt", header=F, stringsAsFactors=F)[,1]
 pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
 cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
-> If installation fails for some packages (esp. *lattice*, *minpack.lm* or *stringi* in R), try using `conda` directly: `conda install -c conda-forge r-NAME_OF_THE_PACKAGE`. For instance: `conda install -c conda-forge r-lattice`
+> If installation fails for some packages (esp. *minpack.lm* or *stringi* in R), try using `conda` directly: `conda install -c conda-forge r-NAME_OF_THE_PACKAGE`. For instance: `conda install -c conda-forge r-stringi`
 
 ## External programs
 
@@ -196,7 +200,7 @@ Run relevant sections in general.sh
 
 ## Simulate and calculate summary statistics for a particular model
 
-The following command will simulate genetic data under the run "1014230". It will simulate 2 chromosomes of 30 Mbp each, sample 50 individuals in YRI and CEU, 1 Neanderthal at time 50 kya, and calculate all genetic summary statistics. The output files will be written into the repository `test/` with prefix `output_1014230.*`.
+The following command will simulate genetic data under the run "1014230". It will simulate 10 chromosomes of 30 Mbp each, sample 50 individuals in YRI and CEU, 1 Neanderthal at time 50 kya, and calculate all genetic summary statistics. The output files will be written into the repository `test/` with prefix `output_1014230.*`.
 
 ```bash
 python3.7 scripts/simulate.py \
@@ -205,7 +209,7 @@ python3.7 scripts/simulate.py \
 --bin_dir bin \
 -i archives/accepted_runs/par_yaml/1014230.par \
 -o test/output_1014230 \
--g 2 30 \
+-g 10 30 \
 --mut_model 'BinaryMutationModel(False)' \
 --algo hudson \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
@@ -249,6 +253,10 @@ demesDemography = demes.load(path_to_the_yaml_file)
 ms_command = demes.to_ms(demesDemography, N0=No)
 print(ms_command)
 ```
+
+# Notes on the observed data
+
+Observed values for the genetic summary statistics are contained in the [`archives/obs`](https://github.com/sunyatin/qna/tree/main/archives/obs) directory. Note that for the S' and the CRF analyses, we used the analyzed data from the original studies, that we further summarized using a custom script which is located in [`archives/obs/estimation/estimation.py`](https://github.com/sunyatin/qna/blob/main/archives/obs/estimation/estimation.py).
 
 # Contact
 
