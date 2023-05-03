@@ -34,7 +34,9 @@ scripts_slurm/			# bash scripts for computations run on SLURM
 	requirements_R.txt	# library requirements for R
 ```
 
-Note that all relevant information can be found in the README files of each respective directory. The `archives/` directory contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics.
+**Note that more information can be found in the README files of each respective directory. **
+
+The `archives/` directory contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics.
 
 > The `general.sh` file contains the full pipeline to simulate genetic data (incl. aDNA) and to compute genetic summary statistics. If you want to re-run the pipeline from scratch, you must perform the run selection analysis (within `analyses.R`) after simulating the *n* data from the  parameter prior distributions (see the first entry of the `general.sh` script).
 
@@ -124,7 +126,7 @@ export LD_LIBRARY_PATH
 
 ## General important notes
 
-For all calls to the `simulate.py` script, you need to make sure that the alias `python3` in your Linux console refers to the version 3.7+:
+For all calls to the `simulate.py` or `sumstats.py` scripts, you need to make sure that the alias `python3` in your Linux console refers to the version 3.7+:
 
 ```bash
 # Check version of python3
