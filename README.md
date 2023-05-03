@@ -247,12 +247,17 @@ print(ms_command)
 - ***demes => ms***
 ```python
 import demes
-# demesDemography is the demographic model in the `demes` format
 # No is the reference effective size
-# Load the demographic model
-demesDemography = demes.load(path_to_the_yaml_file)
-ms_command = demes.to_ms(demesDemography, N0=No)
+Model = demes.load(path_to_the_yaml_file)
+ms_command = demes.to_ms(Model, N0=No)
 print(ms_command)
+```
+
+- ***demes => msprime***
+```python
+import demes, msprime
+# No is the reference effective size
+Model = msprime.Demography.from_demes(demes.load(path_to_the_yaml_file))
 ```
 
 # Notes on the observed data

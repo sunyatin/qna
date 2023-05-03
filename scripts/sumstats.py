@@ -76,6 +76,7 @@ Created on Thu Nov 26 18:24:33 2020
                    - binned distances have a +1-incremented index [instead of non-incremented index]
                    - default value (for missing cov values) is 0 [instead of nan]
                    - do not set all cov values to nan if more than 50% of the bins have missing or infinite cov values [instead of setting them all to nan]
+19.0.1  030523  added option to argparse to print out default values when using --help
 
 ______________________
 
@@ -101,7 +102,7 @@ Options:
 
 """
 
-___version___ = '19.0'
+___version___ = '19.0.1'
 
 import numpy as np
 import sys, re, argparse, time, allel, os, subprocess, gzip, copy
@@ -138,19 +139,19 @@ def global_params():
 ###############################################################################
 
 def parse_options():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--version', action='version', version='%(prog)s: '+str(___version___))
-    parser.add_argument('-i', '--input_prefix', type=str, required=True)
-    parser.add_argument('-o', '--output_prefix', type=str, required=False, default=None)
-    parser.add_argument('-p', '--parameter_file', type=str, required=True)
-    parser.add_argument('--stats', action="store_true", default=False)
-    parser.add_argument('--psmc', action="store_true", default=False)
+    parser.add_argument('-i', '--input_prefix', type=str, required=True, help="Prefix of the input genetic data files")
+    parser.add_argument('-o', '--output_prefix', type=str, required=False, default=None, help="Prefix of the output files")
+    parser.add_argument('-p', '--parameter_file', type=str, required=True, help="Path to the statistical parameter file")
+    parser.add_argument('--stats', action="store_true", default=False, help="Compute classical summary statistics?")
+    parser.add_argument('--psmc', action="store_true", default=False, help="Compute PSMC curves?")
     parser.add_argument('--ld', action="store_true", default=False, help="Compute the ancestry LD on a multi-sample mode.")
     parser.add_argument('--ld1', action="store_true", default=False, help="Compute the ancestry LD on a single-sample mode.")
-    parser.add_argument('--sprime', action="store_true", default=False)
-    parser.add_argument('--crf', action="store_true", default=False)
-    parser.add_argument('--SE', action="store_true", default=False)
-    parser.add_argument('--f4', action="store_true", default=False)
+    parser.add_argument('--sprime', action="store_true", default=False, help="Compute S' analysis?")
+    parser.add_argument('--crf', action="store_true", default=False, help="Compute CRF analysis?")
+    parser.add_argument('--SE', action="store_true", default=False, help="Compute block jackknife standard errors?")
+    parser.add_argument('--f4', action="store_true", default=False, help="Compute f4-ratios?")
     parser.add_argument('--block', type=str, default="5000kb", required=False, help="Block length for jackknife, either *kb for length in kb or *snp for length in a fixed number of SNPs, where * is a numeric value. A block length of 5 Mbp is used for D calculation in Fu et al. 2015, SI 16.")
     parser.add_argument('-v', '--verbose', action='store_true', required=False, help="Add this option to output additional files.")
     parser.add_argument('--chrom', type=int, nargs="*", default=[None], required=False, help="List of chromosomes to analyze.")
@@ -162,10 +163,10 @@ def parse_options():
     parser.add_argument('--vindija', type=str, required=False, help="Vindija_Neanderthal population label, as in the *.ind file; alternatively, in the param file: Vindija_indices_0based", default = None)
     parser.add_argument('--altai', type=str, required=False, help="Altai_Neanderthal population label, as in the *.ind file; alternatively, in the param file: Altai_indices_0based", default = None)
     parser.add_argument('--psmc_pops', type=str, required=False, nargs="*", help="Labels of the populations to analyze with PSMC, will select the first ind of each pop; alternatively, in the param file: psmc_samples_0based", default = None)
-    parser.add_argument('--na_rm', action="store_true", default=False) # v17.0
-    parser.add_argument('--assume_no_na', action="store_true", default=False) # v17.1
-    parser.add_argument('--ancestral', type=str, required=False, help="Population label, as in the *.ind file, of the single individual reference specifying the ancestral genotypes: note that we will polarize all alleles only if the ancestral genotypes are unambiguously 0 or 2", default = None, nargs=1) # v18.0
-    parser.add_argument('--ld_as_sanka12', action='store_true', required=False, help="Add this switch to calculate the population-wise ancestry-LD with the same algorithm and parameters than Sankararaman et al. 12 original study, i.e. (1) using biased covariance stat (/N) instead of unbiased (/(N+1)); (2) binning distances with +1-incremented index instead of non-incremented index; (3) default value as 0 instead of nan; (4) do not set all cov values to nan if more than 50% of the bins have missing or infinite cov values") # v19.0
+    parser.add_argument('--na_rm', action="store_true", default=False, help="Remove missing genotypes?") # v17.0
+    parser.add_argument('--assume_no_na', action="store_true", default=False, help="Should the script assume there is no missing genotypes in the data?") # v17.1
+    parser.add_argument('--ancestral', type=str, required=False, default = None, nargs=1, help="Population label, as in the *.ind file, of the single individual reference specifying the ancestral genotypes: note that we will polarize all alleles only if the ancestral genotypes are unambiguously 0 or 2") # v18.0
+    parser.add_argument('--ld_as_sanka12', action='store_true', default=False, help="Add this switch to calculate the population-wise ancestry-LD with the same algorithm and parameters than Sankararaman et al. 12 original study, i.e. (1) using biased covariance stat (divide by N) instead of unbiased (divide by N+1); (2) binning distances with +1-incremented index instead of non-incremented index; (3) default value as 0 instead of nan; (4) do not set all cov values to nan if more than 50 percents of the bins have missing or infinite cov values") # v19.0
     return parser.parse_args()
 
 def downsample(geno, snp, genetic_pos, acceptance_rates, generator, geno1 = None, columns = None):

@@ -92,6 +92,7 @@ From msp1__zhun.py v1.1.0
 4.3.2   270123  minor bug when importing empirical genetic maps: during truncation, was using index instead of key value for slicing dict of MapRanges
 4.3.3   200323  possibility to output different image format for the model
 4.3.4   220323  check that only biallelic SNPs in output data
+4.3.5   030523  added option to argparse to print out default values when using --help + added missing help messages to argparse calls
 
 
 *** Parameters ***
@@ -130,7 +131,7 @@ For stdpopsim:
 
 """
 
-___version___ = '4.3.4'
+___version___ = '4.3.5'
 
 import sys, argparse, os, subprocess, yaml, time, gzip, copy
 import pandas as pd
@@ -413,19 +414,19 @@ def get_args():
     # fixed arguments
     max_iter = 200
     # arguments
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--version', action='version', version='%(prog)s: '+str(___version___))
     ## mandatory
     parser.add_argument('-i', '--input', type=str, required=True, help="File of demographic parameters")
-    parser.add_argument('-o', '--output', type=str, required=True)
+    parser.add_argument('-o', '--output', type=str, required=True, help="Prefix of the output files")
     parser.add_argument('-g', '--genome', type=float, nargs=2, required=True, help="List: [n_seq] [seq_length_Mbp]. If --map is provided, set the sequence length to -1 if you want to simulate the whole chromosome length provided in the genetic map files.")
-    parser.add_argument('--model', type=str, required=True)
+    parser.add_argument('--model', type=str, required=True, help="Prefix of the python script containing the demographic model to simulate: {MODEL_NAME}.py")
 
     ## optional
-    parser.add_argument('--mut_rate', type=float, required=False, default=1.2e-8)
-    parser.add_argument('--rec_rate', type=float, required=False, default=1.0e-8)
+    parser.add_argument('--mut_rate', type=float, required=False, default=1.2e-8, help="Mutation rate in per bp per generation per lineage")
+    parser.add_argument('--rec_rate', type=float, required=False, default=1.0e-8, help="Recombination rate in per bp per generation per lineage")
     parser.add_argument('--map', type=str, required=False, default=[None], nargs="*", help="Path to the genetic map files, HapMap format without header, genetic positions in cM. CAUTION! Order of columns: chromosome, Rate(cM/Mbp)[can_be_empty], GeneticPosition(cM), PhysicalPosition(bp). In the file name provided, chromosome number must be replaced by XXX. If the sequence length provided in --genome is not set to -1, the resulting sequence length will be sliced to the specified length. YOU CAN PROVIDE MULTIPLE GENETIC MAPS. In this case, starting from the second map, you should write TIME_IN_ya_WHEN_MAP_STARTS_BACKWARD:PATH_TO_MAPS_chrXXX")
-    parser.add_argument('--generation_time', type=float, required=False, default=25)
+    parser.add_argument('--generation_time', type=float, required=False, default=25, help="Generation time in years")
 
     parser.add_argument('-s', '--stat_command', type=str, nargs=2, required=False, default=[None, None], help="List: [script_location] [stat_par_file_location]")
     parser.add_argument('--stats', type=str, nargs="*", default=None, help="List, e.g.: stats ld sprime")
@@ -447,7 +448,7 @@ def get_args():
     parser.add_argument('--algo', type=str, required=False, default=["hudson"], nargs="*", help="Type of algorithm from msprime that is to be used (default: hudson), can also be: smc, dtwf, beta, in that case also specifies the value of 1<alpha<2")
     parser.add_argument('--gconv', type=float, required=False, default=[None, None], nargs=2, help="Parameters of the gene conversion process: gene conversion rate, mean gene conversion tract length in bp")
     parser.add_argument('--lin_prob_times', type=float, required=False, default=[0., 1e6, 1e4], nargs=3, help="Specify the min, max and step value for ages (in ya) to linearly sample for exporting the lineage probability across demes")
-    parser.add_argument('--seed', type=int, required=False, default=None)
+    parser.add_argument('--seed', type=int, required=False, default=None, help="Seed for random generators")
     parser.add_argument('--mut_model', type=str, required=False, default="BinaryMutationModel(False)", help="Mutation model")
     parser.add_argument('--check', action="store_true", required=False, default=False, help="Add this switch to check if the coalescent genealogical simulation works fine; if true, will write a proper *.par file but will not execute the code further, if not, will write a *.failed.par file.")
     parser.add_argument('--force_gpos', action="store_true", required=False, default=False, help="By default, genetic positions are replaced by . when using a mean recombination rate through --rec_rate option. Add this switch to force writing the genetic positions in Morgans.")

@@ -11,6 +11,7 @@ Copy the other *.ind, *.snp.gz and (if exists) *.par file.
 0.0  231222
 0.1  090123  implements the other-file copying to preserve the full dataset structure
 0.2  090123  adds a `seed` option
+0.3  030523  added option to argparse to print out default values when using --help
 
 """
 
@@ -18,14 +19,14 @@ import argparse, os, gzip, yaml, shutil
 import numpy as np
 from numpy.random import Generator, PCG64
 
-__version__ = "0.2"
+__version__ = "0.3"
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--input', type=str, required=True, help="Prefix of EIGENSTRAT dataset.")
-parser.add_argument('-o', '--output', type=str, required=True, help="Prefix of output EIGENSTRAT dataset.")
-parser.add_argument('-p', '--proba_polarization_error', type=float, required=True, help="Probability of ancestral polarization error.")
-parser.add_argument('--ploidy', type=int, required=False, default=2, help="Ploidy.")
-parser.add_argument('--seed', type=int, required=False, default=None, help="Random seed.")
+parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('-i', '--input', type=str, required=True, help="Prefix of the EIGENSTRAT dataset")
+parser.add_argument('-o', '--output', type=str, required=True, help="Prefix of output the EIGENSTRAT dataset")
+parser.add_argument('-p', '--proba_polarization_error', type=float, required=True, help="Probability of ancestral polarization error")
+parser.add_argument('--ploidy', type=int, required=False, default=2, help="Ploidy")
+parser.add_argument('--seed', type=int, required=False, default=None, help="Random seed")
 ARGS = vars(parser.parse_args())
 
 print(yaml.dump(ARGS))
