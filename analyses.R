@@ -739,6 +739,7 @@ if (F) {
   # merge with ANNO
   obs <- merge(obs, ANNO, by.x="SPECIMEN", by.y="GroupID", all.x=T, all.y=F, sort=F)
   obs$SPECIMEN <- as.character(obs$SPECIMEN)
+  obs <- subset(obs, Genetic.ID!="Loschbour_snpAD.DG")
   y <- rev(sort(table(obs$SPECIMEN)))
   if (any(y[!names(y)%in%"French.DG"]!=1)) stop("PB")
   obs <- obs[!duplicated(obs$SPECIMEN),]
