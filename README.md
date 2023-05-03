@@ -71,7 +71,7 @@ conda config --add channels conda-forge
 
 ## Requirements
 
-You will need the following: **python 3.7+** (check that `python3.7-dev` is also installed), **R 3.6.3+**, **openjdk 11.0+**, **gsl**, **openblas**:
+You will need the following: **python 3.7+** (check that `python3.7-dev` is also installed), **R 3.6.3**, **openjdk 11.0+**, **gsl**, **openblas**:
 
 ```bash
 conda install -c conda-forge python=3.7 r-base=3.6.3 openjdk=11.0 gsl openblas
@@ -94,7 +94,7 @@ pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
 cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
-> If installation fails for some packages (esp. *minpack.lm* or *stringi* in R), try using `conda` directly: `conda install -c conda-forge r-NAME_OF_THE_PACKAGE`. For instance: `conda install -c conda-forge r-stringi`
+> If installation fails for some packages (esp. *minpack.lm* or *stringi* in R), try using `conda` directly: `conda install -c conda-forge r-{NAME_OF_THE_PACKAGE}`. For instance: `conda install -c conda-forge r-stringi`
 
 ## External programs
 
@@ -215,7 +215,8 @@ python3.7 scripts/simulate.py \
 --samples_within AfW:pSample.YRI:50:0:YRI EuA:pSample.CEU:50:0:CEU Nea:pSample.Vindija:1:50000:Vindija Nea:pSample.Altai:1:130000:Altai \
 -s scripts/sumstats.py param_files/stats_MAC_diplo.spar \
 --stats stats SE sprime psmc ld crf \
---ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI
+--ceu CEU --yri YRI --vindija Vindija --altai Altai --psmc_pops CEU YRI \
+--draw param_files/qian_png.dpar
 ```
 
 ## Converting between `demes` or `msprime` models and `ms` commands

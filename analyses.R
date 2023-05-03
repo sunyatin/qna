@@ -714,7 +714,7 @@ if (F) {
   #
   obs_ind <- "archives/obs/aDNA/v54.1_1240K_public.ind"
   obs_anno <- "archives/obs/aDNA/v54.1_1240K_public.anno"
-  obs_stats <- archives/obs/aDNA/stats_aDNA"
+  obs_stats <- "archives/obs/aDNA/stats_aDNA"
   #
   schaefer21 <- "Final.Blake/further/20x30Mbp.U/stats_aDNA_schaefer21"
   
@@ -743,8 +743,6 @@ if (F) {
   if (any(y[!names(y)%in%"French.DG"]!=1)) stop("PB")
   obs <- obs[!duplicated(obs$SPECIMEN),]
   obs$SPECIMEN <- factor(obs$SPECIMEN, levels = obs$SPECIMEN[order(obs$C14.mean)])
-  # remove Romania_Oase_UP
-  obs <- subset(obs, SPECIMEN != "Romania_Oase_UP")
   # scale so that French's D = 0.0457
   obs$D.scaled <- obs$D / obs[obs$SPECIMEN=="French.DG","D"] * obs.data$SS$D[,"D"]
   # IC95
