@@ -202,7 +202,7 @@ I19479_in.preparation U Bulgaria_LIA_lc
         S_Aleut-2.DG F   Aleut.DG
         S_Aleut-1.DG M   Aleut.DG
  AltaiNeanderthal.DG F Altai_Neanderthal.DG
-AltaiNeanderthal_snpAD.DG F Altai_Neanderthal.DG
+AltaiNeanderthal_snpAD.DG F Altai_Neanderthal_snpAD.DG
           Altais1.SG U Altaian_o.SG
       S_Altaian-1.DG M Altaian.DG
           Altais2.SG U Altaian.SG
@@ -7585,7 +7585,7 @@ Gyvakarai1_10bp_noUDG M Lithuania_LN
           S_Luo-2.DG F     Luo.DG
                I0001 M Luxembourg_Loschbour
         Loschbour.DG M Luxembourg_Loschbour.DG
-  Loschbour_snpAD.DG M Luxembourg_Loschbour.DG
+  Loschbour_snpAD.DG M Luxembourg_Loschbour_snpAD.DG
           NA19017.SG F     LWK.SG
           NA19019.SG F     LWK.SG
           NA19020.SG M     LWK.SG
@@ -10121,7 +10121,7 @@ S_North_Ossetian-2.DG M Russia_NorthOssetian.DG
      KAR001_noUDG.SG F Russia_Vologda_Veretye_Mesolithic.SG
  Yana_Young_noUDG.SG M Russia_Yana_Medieval.SG
    Yana_old_noUDG.SG M Russia_Yana_UP.SG
-  Yana_old2_noUDG.SG M Russia_Yana_UP.SG
+  Yana_old2_noUDG.SG M Russia_Yana_old2_UP.SG
      NIK004_noUDG.SG F Russia_Yaroslavl_Fatyanovo_BA_dup.I1490.SG
      NIK005_noUDG.SG F Russia_Yaroslavl_Fatyanovo_BA_dup.I7353.SG
      NIK007_noUDG.SG F Russia_Yaroslavl_Fatyanovo_BA_dup.I7354.SG
@@ -12887,9 +12887,9 @@ Anzick_realigned_noUDG.SG M USA_Anzick_realigned.SG
       POP39_noUDG.SG F Croatia_Popova_CA.SG
         F6-620_noUDG M Bulgaria_BachoKiro_LatePleistocene.dup_AA7738
        AA7-738_noUDG M Bulgaria_BachoKiro_LatePleistocene.dup_F6620
-       BB7-240_noUDG M Bulgaria_BachoKiro_LatePleistocene
+       BB7-240_noUDG M Bulgaria_BachoKiro_LatePleistocene_BB7
       CC7-2289_noUDG F Bulgaria_BachoKiro_LatePleistocene
-       CC7-335_noUDG M Bulgaria_BachoKiro_LatePleistocene
+       CC7-335_noUDG M Bulgaria_BachoKiro_LatePleistocene_CC7335
        BK-1653_noUDG F Bulgaria_BachoKiro_LatePleistocene
          Oase1_noUDG M Romania_Oase_UP_enhanced
               ALA118 F Turkey_TellAtchana_MLBA

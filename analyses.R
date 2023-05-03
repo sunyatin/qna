@@ -712,7 +712,7 @@ if (F) {
   SubDirs <- c("stats_aDNA.di.All", "stats_aDNA.pseudodi.Archaic", "stats_aDNA.di.1M", "stats_aDNA.pseudodi.1M")
   DirOut <- "Final.Blake"
   #
-  obs_ind <- "archives/obs/aDNA/v54.1_1240K_public.ind"
+  obs_ind <- "archives/obs/aDNA/v54.1_1240K_public_MODIFIED.ind"
   obs_anno <- "archives/obs/aDNA/v54.1_1240K_public.anno"
   obs_stats <- "archives/obs/aDNA/stats_aDNA"
   #
@@ -739,7 +739,6 @@ if (F) {
   # merge with ANNO
   obs <- merge(obs, ANNO, by.x="SPECIMEN", by.y="GroupID", all.x=T, all.y=F, sort=F)
   obs$SPECIMEN <- as.character(obs$SPECIMEN)
-  obs <- subset(obs, Genetic.ID!="Loschbour_snpAD.DG")
   y <- rev(sort(table(obs$SPECIMEN)))
   if (any(y[!names(y)%in%"French.DG"]!=1)) stop("PB")
   obs <- obs[!duplicated(obs$SPECIMEN),]

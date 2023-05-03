@@ -1,7 +1,12 @@
 # To run the following script, the AADR v54.2 1240K dataset must have been downloaded and
 # converted to EIGENSTRAT (non binarized/compressed *.geno file) format using convertf.
-# Then change the following PREFIX_AADR_DATASET path accordingly.
-PREFIX_AADR_DATASET=data/v54.1.1240K/v54.1_1240K_public
+
+# Then, overwrite the `v54.1_1240K_public.ind` file with the `v54.1_1240K_public_MODIFIED.ind` file
+# from this directory (keeping the name `v54.1_1240K_public.ind`)
+# This *.ind file has a few population labels changed to avoid analyzing duplicated individual entries.
+
+# Then, change the PREFIX_AADR_DATASET path accordingly:
+PREFIX_AADR_DATASET=/home/rtournebize/data/v54.1.1240K/unbinarized/v54.1_1240K_public
 
 for IND in Russia_Yana_old2_UP.SG Russia_Kostenki14 Romania_Oase_UP_enhanced Russia_Ust_Ishim.DG French.DG Luxembourg_Loschbour.DG Germany_EN_LBK_Stuttgart.DG Russia_MA1_HG.SG Bulgaria_BachoKiro_LatePleistocene_BB7 Bulgaria_BachoKiro_LatePleistocene_CC7335
 do
