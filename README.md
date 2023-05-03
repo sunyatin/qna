@@ -256,7 +256,6 @@ print(ms_command)
 - ***demes => msprime***
 ```python
 import demes, msprime
-# No is the reference effective size
 Model = msprime.Demography.from_demes(demes.load(path_to_the_yaml_file))
 ```
 
