@@ -102,10 +102,10 @@ if(length(pkg)) install.packages(pkg)
 
 For legal considerations, we do not include external programs in the repository. Users are asked to download them separately and store the executable in the `~/gitdir/qna/bin` directory:
 
-- `sprime.jar` (*S'* analysis) : download from [here](https://faculty.washington.edu/browning/sprime.jar).
-- `psmc` software (*PSMC* analysis) : download from [here](https://github.com/lh3/psmc).
-- `caller-static-2015` (*CRF* analysis) : to be asked from the [authors](https://doi.org/10.1038/nature12961).
-- executable of the single-sample `neanderthal_dating` (to be stored within `bin/Neanderthal_dating/bin/`) : download from [here](https://github.com/priyamoorjani/Neanderthal_dating).
+- `sprime.jar` (v. 07Dec18.5e2) (*S'* analysis) : download from [here](https://faculty.washington.edu/browning/sprime.jar).
+- `psmc` software (v. 0.6.5-r67) (*PSMC* analysis) : download from [here](https://github.com/lh3/psmc).
+- `caller-static-2015` (2015) (*CRF* analysis) : to be asked from the [authors](https://doi.org/10.1038/nature12961).
+- executable of the single-sample `neanderthal_dating` (v. 5) (to be stored within `bin/Neanderthal_dating/bin/`) : download from [here](https://github.com/priyamoorjani/Neanderthal_dating).
 
 ## Troubleshooting
 
