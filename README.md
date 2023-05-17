@@ -34,7 +34,7 @@ scripts_slurm/			# bash scripts for computations run on SLURM
 	requirements_R.txt	# library requirements for R
 ```
 
-**Note that more information can be found in the README files of each respective directory. **
+**Note that more information can be found in the README files of each respective directory.**
 
 The `archives/` directory contains the [`demes`](https://popsim-consortium.github.io/demes-spec-docs/main/introduction.html)-formatted histories, observed statistics.
 
@@ -96,7 +96,7 @@ pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
 cat("Packages that will be installed: "); print(pkg)
 if(length(pkg)) install.packages(pkg)
 ```
-> If installation fails for some packages (esp. *minpack.lm* or *stringi* in R), try using `conda` directly: `conda install -c conda-forge r-{NAME_OF_THE_PACKAGE}`. For instance: `conda install -c conda-forge r-stringi`
+> If installation fails for some packages (esp. `minpack.lm` or `stringi` in R), try using `conda` directly: `conda install -c conda-forge r-{NAME_OF_THE_PACKAGE}`. For instance: `conda install -c conda-forge r-stringi`
 
 ## External programs
 
