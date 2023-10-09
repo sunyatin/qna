@@ -242,7 +242,7 @@ Model = msprime.Demography.from_demes(demes.from_ms(ms_command, N0=No))
 import demes, msprime
 # msprimeDemography is the demographic model in the `msprime` format
 # No is the reference effective size
-ms_command = demes.to_ms(msprimeDemography.to_demes(), N0=No)
+ms_command = demes.to_ms(msprime.Demography.to_demes(), N0=No)
 print(ms_command)
 ```
 
