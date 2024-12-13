@@ -267,7 +267,7 @@ Observed values for the genetic summary statistics are contained in the [`archiv
 
 # Contact
 
-remi (dot) tournebize (at) univ-tlse3 (dot) fr
+remi (dot) tournebize (at) ird (dot) fr
 
 
 [^1]: Genetic data are in [EIGENSTRAT](https://reich.hms.harvard.edu/software/InputFileFormats) format with a modification: `0` encodes the **ancestral homozygous** genotype (instead of the *derived* homozygous genotype in pure EIGENSTRAT). Subsequently, `2` encodes the derived homozygous genotype. All genotypes are mono- or bi-allelic at most.
